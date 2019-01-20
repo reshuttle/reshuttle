@@ -1,28 +1,19 @@
-import React from 'react'
 import styled from '@emotion/styled'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faPhone,
-  faNewspaper,
-  faBriefcase,
-  faChalkboardTeacher,
-  faRocket,
-  faSearch,
-} from '@fortawesome/free-solid-svg-icons'
 import transformColor from '../helpers/transformColor'
 
 export const SidebarContainer = styled.div({
-  position: 'absolute',
+  position: 'fixed',
   zIndex: 1,
   top: 0,
   left: 0,
   backgroundColor: '#444C5E',
   overflowX: 'visible',
   color: '#fff',
-  minHeight: '100vh',
+  height: '100vh',
   '@media (max-width: 768px)': {
     display: 'none',
   },
+  boxShadow: '0 0 10px #444C5E',
 })
 
 export const SidebarItem = styled.a(({ active, header }) => ({
@@ -81,31 +72,3 @@ export const Tooltip = styled.span(({ header }) => ({
   fontFamily: "'IBM Plex Mono', monospace",
   transform: 'translate(-50%, -50%)',
 }))
-
-export default () => (
-  <SidebarContainer>
-    <SidebarItem header>
-      <FontAwesomeIcon icon={faRocket} />
-    </SidebarItem>
-    <SidebarItem active>
-      <FontAwesomeIcon icon={faSearch} />
-      <Tooltip>search</Tooltip>
-    </SidebarItem>
-    <SidebarItem>
-      <FontAwesomeIcon icon={faNewspaper} />
-      <Tooltip>articles</Tooltip>
-    </SidebarItem>
-    <SidebarItem>
-      <FontAwesomeIcon icon={faChalkboardTeacher} />
-      <Tooltip>courses</Tooltip>
-    </SidebarItem>
-    <SidebarItem>
-      <FontAwesomeIcon icon={faBriefcase} />
-      <Tooltip>projects</Tooltip>
-    </SidebarItem>
-    <SidebarItem>
-      <FontAwesomeIcon icon={faPhone} />
-      <Tooltip>contact</Tooltip>
-    </SidebarItem>
-  </SidebarContainer>
-)

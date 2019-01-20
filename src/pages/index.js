@@ -7,30 +7,36 @@ export default () => (
   <>
     <Global
       styles={css`
-        @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,600');
+        @import url('https://fonts.googleapis.com/css?family=Nunito|IBM+Plex+Mono:400,400i');
 
         body {
           margin: 0;
           background-color: #f5f0e5;
+        }
+
+        h1 {
+          font-family: 'IBM Plex Mono', monospace;
+          font-weight: 400;
+          font-style: italic;
+          font-size: 3rem;
+        }
+
+        p {
+          font-family: 'Nunito', sans-serif;
+          font-size: 1.3rem;
         }
       `}
     />
     <Sidebar />
     <Content>
       <Container>
-        <h1>Lorem Ipsum</h1>
+        <h1>Cross Platform desktop application with Electron</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-          vulputate non elit non pharetra. Etiam et elit quis sem ornare
-          pulvinar nec in elit. Mauris at tortor in neque facilisis maximus.
-          Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi
-          volutpat molestie sem, id blandit nibh facilisis eu. Vivamus malesuada
-          velit at erat egestas, at mollis sem euismod. Mauris ornare, turpis a
-          sagittis imperdiet, ipsum elit sagittis neque, nec interdum ex nibh eu
-          elit. Proin velit ante, commodo quis semper et, egestas non metus.
-          Phasellus fringilla odio blandit est ultrices sagittis. Curabitur
-          vitae volutpat ipsum. Aliquam non mi nec purus auctor tempor a vel
-          eros.
+          The demand for efficient web uploads brought about the rise of the
+          JAMStack, which facilitates the design of interfaces and makes API
+          calls to remote microservices and simple markups with JavaScript. The
+          result? Enhanced security, reduced hosting cost, and lower
+          requirements of programming skills for building web apps
         </p>
       </Container>
     </Content>

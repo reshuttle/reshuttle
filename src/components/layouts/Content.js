@@ -11,5 +11,5 @@ export const Container = styled.div({
   maxWidth: 1000,
   marginLeft: 'auto',
   marginRight: 'auto',
-  padding: 10,
+  padding: 20,
 })

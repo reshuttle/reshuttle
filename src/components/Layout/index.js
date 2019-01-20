@@ -18,41 +18,45 @@ export default ({ children }) => (
   <>
     <Global
       styles={css`
-        @import url('https://fonts.googleapis.com/css?family=Nunito|Fira+Mono');
+        @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Baloo+Thambi|Fira+Mono');
 
         body {
           margin: 0;
           background-color: #f5f0e5;
         }
 
+        strong {
+          font-weight: 700;
+        }
+
+        h1,
+        h2,
+        h3 {
+          font-family: 'Baloo Thambi', cursive;
+        }
+
         h1 {
-          font-family: 'Nunito', monospace;
-          font-weight: 600;
           font-size: 2.5rem;
         }
 
         h2 {
-          font-family: 'Nunito', monospace;
-          font-weight: 600;
-          font-size: 1.8rem;
-          margin-top: 3rem;
-          margin-bottom: 1.5rem;
+          font-size: 2rem;
+          margin-bottom: 1rem;
+          margin-top: 1rem;
         }
 
         h3 {
-          font-family: 'Nunito', monospace;
-          font-weight: 600;
-          font-size: 1.4rem;
-          margin-top: 3rem;
-          margin-bottom: 1.5rem;
+          font-size: 1.7rem;
+          margin-bottom: 1rem;
+          margin-top: 1rem;
         }
 
         p {
-          font-family: 'Nunito', monospace;
+          font-family: 'Nunito', sans-serif;
           font-size: 1.3rem;
           margin-top: 0px;
-          margin-bottom: 1.8rem;
-          margin-top: 1.8rem;
+          margin-bottom: 2rem;
+          margin-top: 2rem;
           text-align: justify;
         }
 
@@ -84,21 +88,26 @@ export default ({ children }) => (
           }
         }
 
-        ul li {
-          font-family: 'Nunito', monospace;
-          font-size: 1.3rem;
+        ul {
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+
+          li {
+            font-family: 'Nunito', monospace;
+            font-size: 1.3rem;
+          }
         }
       `}
     />
     <SidebarContainer>
-      <SidebarItem header>
+      <SidebarItem header to="/">
         <FontAwesomeIcon icon={faRocket} />
       </SidebarItem>
-      <SidebarItem active>
+      <SidebarItem>
         <FontAwesomeIcon icon={faSearch} />
         <Tooltip>search</Tooltip>
       </SidebarItem>
-      <SidebarItem>
+      <SidebarItem active to="/articles">
         <FontAwesomeIcon icon={faNewspaper} />
         <Tooltip>articles</Tooltip>
       </SidebarItem>

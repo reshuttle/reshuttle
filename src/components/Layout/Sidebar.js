@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import transformColor from '../helpers/transformColor'
+import { Link } from 'gatsby'
 
 export const SidebarContainer = styled.div({
   position: 'fixed',
@@ -16,7 +17,7 @@ export const SidebarContainer = styled.div({
   boxShadow: '0 0 10px #444C5E',
 })
 
-export const SidebarItem = styled.a(({ active, header }) => ({
+export const SidebarItem = styled(Link)(({ active, header }) => ({
   display: 'flex',
   justifyContent: 'center',
   marginBottom: 5,
@@ -56,7 +57,7 @@ export const SidebarItem = styled.a(({ active, header }) => ({
       },
 }))
 
-export const Tooltip = styled.span(({ header }) => ({
+export const Tooltip = styled.span({
   visibility: 'hidden',
   width: 120,
   backgroundColor: transformColor('#444C5E', 30),
@@ -69,6 +70,6 @@ export const Tooltip = styled.span(({ header }) => ({
   top: '50%',
   left: '190%',
   fontSize: '1rem',
-  fontFamily: "'IBM Plex Mono', monospace",
+  fontFamily: "'Fira Mono', monospace",
   transform: 'translate(-50%, -50%)',
-}))
+})

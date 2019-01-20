@@ -1,5 +1,6 @@
 ---
 title: 'Crazy Fast create-react-app Project with Server Side Rendering'
+description: 'Learn how to upgrade your existing React app to a Server-rendered web app'
 date: '2019-01-21'
 path: '/articles/crazy-fast-create-react-app-project-with-server-side-rendering'
 tags: ['react', 'ssr', 'create-react-app', 'javascript', 'fast', 'web', 'app']
@@ -10,11 +11,11 @@ thumbnail: '/assets/crazy-fast-create-react-app-project-with-server-side-renderi
 
 ## Introduction
 
-If you have playing around with [**React**](https://reactjs.org) for a while, and you are planning to use it for production, you may need to considering about the performance and SEO for your web app. And that problem can be solved by server-side rendering. Even there are many different approach to achieve better performance on **client-side rendering**, it might **not be a good solution** for low-powered devices such as an old phone.
+If you have playing around with [**React**](https://reactjs.org) for a while, and you start to planning a production web app, you may need to considering about the performance and SEO for your web app. And that problem can be solved by server-side rendering. Even there are many different approach to achieve better performance on **client-side rendering**, it might **not be a good solution** for low-powered devices such as an old phone.
 
-### What's makes it special?
+### What's makes crazy fast?
 
-When you are using the client-side rendering, A typical response sent by the server when requesting a React site will look something like this:
+On the client-side rendering approach, A typical response sent by the server when requesting a React site will look something like this:
 
 ```html
 <!DOCTYPE html>
@@ -31,7 +32,7 @@ When you are using the client-side rendering, A typical response sent by the ser
 </html>
 ```
 
-After fetching this response, our browser need to fetch the bundled javascript code which in this case is `/app.js`. Then, the browser will render our React components to the DOM. So the performance will depends on your internet connection and CPU power. See? This approach takes a lot of times even until users can see the actual page looks like.
+After fetching this response, our browser need to fetch the bundled javascript code which in this case is `/app.js`. Then, the browser will render our React components to the DOM. So the performance will depends on your internet connection and CPU power. See? This approach takes a lot of times even until the users can see the actual page looks like.
 
 On the other hand, server-side rendering use the server to render our React components. That's what makes it _CRAZY FAST ⚡_. So the users can immediately see the page content, even before the browser gets the bundled javascript.
 

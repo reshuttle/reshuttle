@@ -8,7 +8,7 @@ export const Content = styled.div({
 })
 
 export const Container = styled.div({
-  maxWidth: 1000,
+  maxWidth: 960,
   marginLeft: 'auto',
   marginRight: 'auto',
   padding: 20,

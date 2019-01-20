@@ -89,23 +89,23 @@ export default () => (
     </SidebarItem>
     <SidebarItem active>
       <FontAwesomeIcon icon={faSearch} />
-      <Tooltip>Search</Tooltip>
+      <Tooltip>search</Tooltip>
     </SidebarItem>
     <SidebarItem>
       <FontAwesomeIcon icon={faNewspaper} />
-      <Tooltip>Articles</Tooltip>
+      <Tooltip>articles</Tooltip>
     </SidebarItem>
     <SidebarItem>
       <FontAwesomeIcon icon={faChalkboardTeacher} />
-      <Tooltip>Courses</Tooltip>
+      <Tooltip>courses</Tooltip>
     </SidebarItem>
     <SidebarItem>
       <FontAwesomeIcon icon={faBriefcase} />
-      <Tooltip>Projects</Tooltip>
+      <Tooltip>projects</Tooltip>
     </SidebarItem>
     <SidebarItem>
       <FontAwesomeIcon icon={faPhone} />
-      <Tooltip>Contact</Tooltip>
+      <Tooltip>contact</Tooltip>
     </SidebarItem>
   </SidebarContainer>
 )

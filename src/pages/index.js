@@ -18,7 +18,7 @@ export default () => (
           font-family: 'IBM Plex Mono', monospace;
           font-weight: 400;
           font-style: italic;
-          font-size: 3rem;
+          font-size: 2.5rem;
         }
 
         p {

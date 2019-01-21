@@ -70,6 +70,6 @@ export const Tooltip = styled.span({
   top: '50%',
   left: '190%',
   fontSize: '1rem',
-  fontFamily: "'Fira Mono', monospace",
+  fontFamily: "'IBM Plex Mono', monospace",
   transform: 'translate(-50%, -50%)',
 })

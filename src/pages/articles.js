@@ -16,6 +16,10 @@ const ArticleCard = styled.div({
   marginBottom: '2rem',
   cursor: 'pointer',
 
+  '@media (max-width: 768px)': {
+    width: '100%',
+  },
+
   // Hover float
   WebkitTransform: 'perspective(1px) translateZ(0)',
   transform: 'perspective(1px) translateZ(0)',
@@ -25,10 +29,6 @@ const ArticleCard = styled.div({
   transitionProperty: 'transform',
   WebkitTransitionTimingFunction: 'ease-out',
   transitionTimingFunction: 'ease-out',
-})
-
-const ArticleCardImage = styled.img({
-  width: '100%',
 })
 
 const ArticleCardContent = styled.div({
@@ -59,7 +59,7 @@ export default ({ data }) => {
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <Layout>
+    <Layout active="articles">
       <div
         style={{
           display: 'flex',
@@ -71,31 +71,6 @@ export default ({ data }) => {
           <>
             <div>
               <ArticleCard onClick={() => push(node.frontmatter.path)}>
-                <ArticleCardImage src={node.frontmatter.thumbnail} />
-                <ArticleCardContent>
-                  <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
-                  <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>
-                  <ArticleCardDescription>
-                    {node.frontmatter.description}
-                  </ArticleCardDescription>
-                </ArticleCardContent>
-              </ArticleCard>
-            </div>
-            <div>
-              <ArticleCard onClick={() => push(node.frontmatter.path)}>
-                <ArticleCardImage src={node.frontmatter.thumbnail} />
-                <ArticleCardContent>
-                  <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
-                  <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>
-                  <ArticleCardDescription>
-                    {node.frontmatter.description}
-                  </ArticleCardDescription>
-                </ArticleCardContent>
-              </ArticleCard>
-            </div>
-            <div>
-              <ArticleCard onClick={() => push(node.frontmatter.path)}>
-                <ArticleCardImage src={node.frontmatter.thumbnail} />
                 <ArticleCardContent>
                   <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
                   <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>

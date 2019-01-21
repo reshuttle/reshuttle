@@ -19,19 +19,9 @@ export default ({ data }) => {
   const post = data.markdownRemark
 
   return (
-    <Layout>
-      <div style={{ display: 'flex' }}>
-        <div>
-          <Title>{post.frontmatter.title}</Title>
-          <Date>{post.frontmatter.date}</Date>
-        </div>
-      </div>
-      {/* <img
-        src={post.frontmatter.thumbnail}
-        width="100%"
-        style={{ boxShadow: '0 0 10px #444C5E', borderRadius: 10 }}
-        alt={post.frontmatter.title}
-      /> */}
+    <Layout active="articles">
+      <Title>{post.frontmatter.title}</Title>
+      <Date>{post.frontmatter.date}</Date>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   )
@@ -46,6 +36,7 @@ export const query = graphql`
         thumbnail
       }
       html
+      htmlAst
     }
   }
 `

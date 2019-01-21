@@ -11,7 +11,7 @@ thumbnail: '/assets/crazy-fast-create-react-app-project-with-server-side-renderi
 
 If you have playing around with [**React**](https://reactjs.org) for a while, and you start to planning a production web app, you may need to considering about the performance and SEO for your web app. And that problem can be solved by server-side rendering. Even there are many different approach to achieve better performance on **client-side rendering**, it might **not be a good solution** for low-powered devices such as an old phone.
 
-### What's makes crazy fast?
+### What's makes it crazy fast?
 
 On the client-side rendering approach, A typical response sent by the server when requesting a React site will look something like this:
 
@@ -48,9 +48,9 @@ The fastest way to getting started with React is by using [create-react-app](htt
 ## Getting Started
 
 ```bash
-npx create-react-app hello-world-ssr
+$ npx create-react-app hello-world-ssr
 
-cd hello-world-ssr
+$ cd hello-world-ssr
 ```
 
 Now, you have created the new project. So, let's jump to the next tutorial.

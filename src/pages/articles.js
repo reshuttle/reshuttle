@@ -45,14 +45,14 @@ const ArticleCardTitle = styled.h3({
 const ArticleCardDate = styled.p({
   margin: 0,
   color: '#454545',
-  fontSize: '1.1rem',
+  fontSize: '0.9rem',
 })
 
 const ArticleCardDescription = styled.p({
   margin: 0,
   marginTop: '1.5rem',
   color: '#454545',
-  fontSize: '1.1rem',
+  fontSize: '1.2rem',
 })
 
 export default ({ data }) => {
@@ -69,30 +69,42 @@ export default ({ data }) => {
       >
         {posts.map(({ node }) => (
           <>
-            <ArticleCard onClick={() => push(node.frontmatter.path)}>
-              <ArticleCardImage src={node.frontmatter.thumbnail} />
-              <ArticleCardContent>
-                <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
-                <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>
-                <ArticleCardDescription>
-                  {node.frontmatter.description}
-                </ArticleCardDescription>
-              </ArticleCardContent>
-            </ArticleCard>
-            <ArticleCard>
-              <ArticleCardImage src={node.frontmatter.thumbnail} />
-              <ArticleCardContent>
-                <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
-                <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>
-              </ArticleCardContent>
-            </ArticleCard>
-            <ArticleCard>
-              <ArticleCardImage src={node.frontmatter.thumbnail} />
-              <ArticleCardContent>
-                <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
-                <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>
-              </ArticleCardContent>
-            </ArticleCard>
+            <div>
+              <ArticleCard onClick={() => push(node.frontmatter.path)}>
+                <ArticleCardImage src={node.frontmatter.thumbnail} />
+                <ArticleCardContent>
+                  <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
+                  <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>
+                  <ArticleCardDescription>
+                    {node.frontmatter.description}
+                  </ArticleCardDescription>
+                </ArticleCardContent>
+              </ArticleCard>
+            </div>
+            <div>
+              <ArticleCard onClick={() => push(node.frontmatter.path)}>
+                <ArticleCardImage src={node.frontmatter.thumbnail} />
+                <ArticleCardContent>
+                  <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
+                  <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>
+                  <ArticleCardDescription>
+                    {node.frontmatter.description}
+                  </ArticleCardDescription>
+                </ArticleCardContent>
+              </ArticleCard>
+            </div>
+            <div>
+              <ArticleCard onClick={() => push(node.frontmatter.path)}>
+                <ArticleCardImage src={node.frontmatter.thumbnail} />
+                <ArticleCardContent>
+                  <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
+                  <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>
+                  <ArticleCardDescription>
+                    {node.frontmatter.description}
+                  </ArticleCardDescription>
+                </ArticleCardContent>
+              </ArticleCard>
+            </div>
           </>
         ))}
       </div>

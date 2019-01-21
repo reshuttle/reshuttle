@@ -79,9 +79,9 @@ export default ({ children }) => (
 
         blockquote {
           border-left: 0.25em solid #ff642e;
-          padding: 1rem 40px;
+          padding: 1rem 30px;
           margin: 0px;
-          background-color: ${transformColor('#ff642e', 100)};
+          /* background-color: ${transformColor('#ff642e', 100)}; */
 
           p {
             margin: 0px;

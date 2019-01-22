@@ -66,6 +66,7 @@ export default () => (
 
       code[class*='language-'] {
         font-family: 'IBM Plex Mono', monospace;
+        padding: 0 0.2em !important;
       }
 
       blockquote {

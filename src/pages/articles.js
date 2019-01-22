@@ -96,7 +96,6 @@ export const query = graphql`
             title
             description
             path
-            thumbnail
             date(formatString: "DD MMMM, YYYY")
           }
         }

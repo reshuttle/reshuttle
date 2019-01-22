@@ -4,6 +4,7 @@ export const Content = styled.div({
   marginLeft: 74,
   '@media (max-width: 768px)': {
     marginLeft: 0,
+    marginTop: 55,
   },
 })
 

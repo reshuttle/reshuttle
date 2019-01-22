@@ -9,7 +9,6 @@ export const SidebarContainer = styled.div({
   left: 0,
   backgroundColor: '#444C5E',
   overflowX: 'visible',
-  color: '#fff',
   height: '100vh',
   '@media (max-width: 768px)': {
     display: 'none',

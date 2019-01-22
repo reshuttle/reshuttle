@@ -67,20 +67,18 @@ export default ({ data }) => {
           flexWrap: 'wrap',
         }}
       >
-        {posts.map(({ node }) => (
-          <>
-            <div>
-              <ArticleCard onClick={() => push(node.frontmatter.path)}>
-                <ArticleCardContent>
-                  <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
-                  <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>
-                  <ArticleCardDescription>
-                    {node.frontmatter.description}
-                  </ArticleCardDescription>
-                </ArticleCardContent>
-              </ArticleCard>
-            </div>
-          </>
+        {posts.map(({ node }, i) => (
+          <div key={i}>
+            <ArticleCard onClick={() => push(node.frontmatter.path)}>
+              <ArticleCardContent>
+                <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
+                <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>
+                <ArticleCardDescription>
+                  {node.frontmatter.description}
+                </ArticleCardDescription>
+              </ArticleCardContent>
+            </ArticleCard>
+          </div>
         ))}
       </div>
     </Layout>

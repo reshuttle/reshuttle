@@ -35,8 +35,6 @@ On the other hand, server-side rendering use the server to render our React comp
 
 Unfortunately, server-side rendering comes with **one big problem**. It's very hard to configure from scratch. Also, you need to make sure that your javascript code could run by the server and the browser, and that's not a good story. For example, you can't use localStorage **directly** to your app, instead, you need to check whether it's run on the browser or server. But if you really want to spend much time and effort to get better performance and SEO, it might be a good choice.
 
-<!-- The fastest way to getting started with React is by using [create-react-app](https://facebook.github.io/create-react-app) boilerplate. That's why we will start to upgrade our boilerplate with server-side rendering. -->
-
 ## Prerequisites
 
 - A bit knowledge of HTML & CSS
@@ -47,25 +45,151 @@ Unfortunately, server-side rendering comes with **one big problem**. It's very h
 ## Getting Started
 
 ```bash
-$ git clone https://github.com/reshuttle/react-ssr-demo.git
+$ mkdir react-ssr-demo && cd react-ssr-demo
 
-$ cd react-ssr-demo
+$ npm init
 ```
 
 Clone the repository on github, then go into that folder. Run `npm install`. Then you will see something like this.
 
-```
-the structure of the folder
+```├── server.js
+├── src
+│   ├── App.js
+│   └── index.js
+├── .babelrc
+├── webpack.config.js
+├── package.json
+└── yarn.lock
 ```
 
 If you familiar with [create-react-app](https://facebook.github.io/create-react-app), The folder structure is almost the same. Everything inside `src` folder is our main React code. The `index.js` in the root folder is the server code which we jump into later.
 
 ## Babel configuration
 
-React need [Babel](https://babeljs.io) to compile the **JSX** code. Thanks to create-react-app v2, We now can use the react-app preset which is a preconfigured babel config provided by create-react-app. So, let's start by adding `.babelrc` file.
+React need [Babel](https://babeljs.io) to compile modern javascript language into es2015 which is compatible to almost all browser in the world. We will use **env** and **react** presets since we're using es6 and jsx. So, let's start by adding `.babelrc` file.
 
 ```json
 {
-  "presets": ["react-app"]
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
 ```
+
+## Webpack configuration
+
+[Webpack](https://webpack.js.org) is a javascript build tool to bundle all assets in our app. In this case, we will use it to bundle our client side code. By default, webpack will looking at `webpack.config.js`, so let's make one.
+
+```js
+const path = require('path')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'client.js',
+  },
+  module: {
+    rules: [{ test: /\.js/, use: 'babel-loader' }],
+  },
+}
+```
+
+The entry indicates which module webpack should use to begin building. The output of the bundled code will be stored in the dist folder inside the root folder in the file called `client.js`. This code be executed by the browser.
+
+By default, webpack only understands JavaScript and JSON files. Because we are using the Babel to transpile our javascript code. we need to add loaders configurations which is defined in webpack configuration file. In this case we're using `babel-loader` since we're using Babel.
+
+## React components
+
+We have Babel & Webpack ready, now it's time to write our first server-rendered React component. Let's add `app.js` and `index.js` inside src folder.
+
+```js
+// App.js
+import React from 'react'
+
+export default () => (
+  <div>
+    <h1>Hello World with SSR! 🎉🎉🎉</h1>
+  </div>
+)
+
+// index.js
+import React from 'react'
+import { hydrate } from 'react-dom'
+import App from './App'
+
+hydrate(<App />, document.getElementById('root'))
+```
+
+If you familiar with create-react-app, Usually we have index.js which will **render** our React components. But server-side rendering is a little bit different. Instead of rendering our app, now we're **hydrating** our app. And why is that?
+
+When using server-side rendering approach, the server will take care of rendering our app. So, the browser only hydrating our existing component, which is **already rendered** by our server. That's why server-side rendering is a lot faster because the browser do less job.
+
+## Server code
+
+We're almost there! the last thing we need to do to make this app work is by adding the server code. Add `server.js` inside the root folder.
+
+```js
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import express from 'express'
+
+import App from './src/App'
+
+const app = express()
+
+app.get('/client.js', (req, res) => res.sendFile(__dirname + '/dist/client.js'))
+
+app.get('*', (req, res) => {
+  const data = renderToString(<App />)
+  const html = `
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8" />
+          <title>React App</title>
+        </head>
+        <body>
+          <div id="root">${data}</div>
+          <script src="/client.js"></script>
+        </body>
+      </html>
+    `
+  res.send(html)
+})
+
+app.listen(3000)
+```
+
+In our server, we have two different routes. The first one is for serving the bundled client-side code. The second one is for serving our app. As you see, the _app_ route return an html string which is populated by our rendered React components.
+
+## NPM scripts
+
+Before we start to run our app, we need to configure our **npm** scripts to make our life easier. Edit your `package.json`:
+
+```json
+{
+  // ...
+  "scripts": {
+    "start": "NODE_ENV=development babel-node server.js",
+    "build": "NODE_ENV=development webpack"
+  }
+  // ...
+}
+```
+
+## Run our app
+
+First, build our client-side code by running:
+
+```bash
+npm run build
+```
+
+Second, run our app by running:
+
+```bash
+run run start
+```
+
+Then, open your browser and go to [http://localhost:3000](http://localhost:3000), You will see something like this:
+
+![screenshot](/assets/crazy-fast-react-site-with-server-side-rendering.png)

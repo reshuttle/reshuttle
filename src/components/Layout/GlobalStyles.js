@@ -66,7 +66,11 @@ export default () => (
 
       code[class*='language-'] {
         font-family: 'IBM Plex Mono', monospace;
+      }
+
+      code[class='language-text'] {
         padding: 0 0.2em !important;
+        font-size: 1.1rem;
       }
 
       blockquote {
@@ -87,6 +91,11 @@ export default () => (
           font-family: 'Nunito', monospace;
           font-size: 1.3rem;
         }
+      }
+
+      img {
+        box-shadow: 0 0 10px #444c5e;
+        width: 100%;
       }
     `}
   />

@@ -5,14 +5,21 @@ import {
   faSearch,
   faNewspaper,
   faChalkboardTeacher,
-  faBriefcase,
   faPhone,
   faTags,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons'
 
 import { SidebarContainer, SidebarItem, Tooltip } from './Sidebar'
 import { Container, Content } from './Content'
 import GlobalStyles from './GlobalStyles'
+import {
+  Topbar,
+  TopbarItem,
+  TopbarMenu,
+  TopbarMenus,
+  TopbarMenuItem,
+} from './Topbar'
 
 export default ({ children, active }) => (
   <>
@@ -42,6 +49,33 @@ export default ({ children, active }) => (
         <Tooltip>contact</Tooltip>
       </SidebarItem>
     </SidebarContainer>
+    <Topbar>
+      <TopbarItem to="/">
+        <FontAwesomeIcon icon={faRocket} />
+        <span>Reshuttle</span>
+      </TopbarItem>
+      <TopbarMenu>
+        <FontAwesomeIcon icon={faBars} />
+        <TopbarMenus>
+          <TopbarMenuItem to="/search">
+            <FontAwesomeIcon icon={faSearch} />
+            <span>search</span>
+          </TopbarMenuItem>
+          <TopbarMenuItem to="/articles">
+            <FontAwesomeIcon icon={faNewspaper} />
+            <span>articles</span>
+          </TopbarMenuItem>
+          <TopbarMenuItem to="/tags">
+            <FontAwesomeIcon icon={faTags} />
+            <span>tags</span>
+          </TopbarMenuItem>
+          <TopbarMenuItem to="/courses">
+            <FontAwesomeIcon icon={faChalkboardTeacher} />
+            <span>courses</span>
+          </TopbarMenuItem>
+        </TopbarMenus>
+      </TopbarMenu>
+    </Topbar>
     <Content>
       <Container>{children}</Container>
     </Content>

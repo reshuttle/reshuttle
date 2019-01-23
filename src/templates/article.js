@@ -28,8 +28,8 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query($slug: String!) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
         date(formatString: "DD MMMM, YYYY")

@@ -1,9 +1,10 @@
 ---
 title: 'Crazy Fast React Site with Server Side Rendering'
 description: 'Learn how to build React app with server-side rendering without tears 😭'
-date: '2019-01-21'
-path: '/articles/crazy-fast-react-site-with-server-side-rendering'
-tags: ['crazy', 'fast', 'react', 'ssr', 'javascript', 'fast', 'web', 'app']
+date: '2019-01-24'
+slug: '/articles/crazy-fast-react-site-with-server-side-rendering'
+tags: ['app', 'react', 'ssr', 'javascript']
+published: true
 ---
 
 ## Introduction
@@ -52,7 +53,8 @@ $ npm init
 
 Clone the repository on github, then go into that folder. Run `npm install`. Then you will see something like this.
 
-```├── server.js
+```tree
+├── server.js
 ├── src
 │   ├── App.js
 │   └── index.js
@@ -193,3 +195,7 @@ run run start
 Then, open your browser and go to [http://localhost:3000](http://localhost:3000), You will see something like this:
 
 ![screenshot](/assets/crazy-fast-react-site-with-server-side-rendering.png)
+
+## Conslusion
+
+Server-side rendering is a good technology for those who **really need** SEO and good performance. But, if you are building a dashboard app or anything that doesn't need to appear in google search. SPA is a good option for you 😊✌️.

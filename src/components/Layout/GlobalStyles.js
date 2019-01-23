@@ -4,7 +4,7 @@ import { Global, css } from '@emotion/core'
 export default () => (
   <Global
     styles={css`
-      @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Baloo+Thambi|IBM+Plex+Mono:500');
+      @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Quicksand:700|IBM+Plex+Mono:500');
 
       body {
         margin: 0;
@@ -18,7 +18,8 @@ export default () => (
       h1,
       h2,
       h3 {
-        font-family: 'Baloo Thambi', cursive;
+        font-family: 'Quicksand', cursive;
+        font-weight: 700;
       }
 
       h1 {
@@ -45,7 +46,6 @@ export default () => (
       p {
         font-family: 'Nunito', sans-serif;
         font-size: 1.3rem;
-        margin-top: 0px;
         margin-bottom: 2rem;
         margin-top: 2rem;
         text-align: justify;
@@ -62,6 +62,8 @@ export default () => (
 
       .gatsby-highlight pre[class*='language-'] {
         border-left: 0.25em solid #ff642e;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
       }
 
       code[class*='language-'] {

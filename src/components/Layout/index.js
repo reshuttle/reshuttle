@@ -5,7 +5,6 @@ import {
   faSearch,
   faNewspaper,
   faChalkboardTeacher,
-  faPhone,
   faTags,
   faBars,
 } from '@fortawesome/free-solid-svg-icons'
@@ -36,17 +35,13 @@ export default ({ children, active }) => (
         <FontAwesomeIcon icon={faNewspaper} />
         <Tooltip>articles</Tooltip>
       </SidebarItem>
-      <SidebarItem>
-        <FontAwesomeIcon icon={faChalkboardTeacher} />
-        <Tooltip>courses</Tooltip>
-      </SidebarItem>
       <SidebarItem active={active === 'tags'} to="/tags">
         <FontAwesomeIcon icon={faTags} />
         <Tooltip>tags</Tooltip>
       </SidebarItem>
-      <SidebarItem>
-        <FontAwesomeIcon icon={faPhone} />
-        <Tooltip>contact</Tooltip>
+      <SidebarItem active={active === 'courses'} to="/courses">
+        <FontAwesomeIcon icon={faChalkboardTeacher} />
+        <Tooltip>courses</Tooltip>
       </SidebarItem>
     </SidebarContainer>
     <Topbar>
@@ -57,19 +52,19 @@ export default ({ children, active }) => (
       <TopbarMenu>
         <FontAwesomeIcon icon={faBars} />
         <TopbarMenus>
-          <TopbarMenuItem to="/search">
+          <TopbarMenuItem active={active === 'search'} to="/search">
             <FontAwesomeIcon icon={faSearch} />
             <span>search</span>
           </TopbarMenuItem>
-          <TopbarMenuItem to="/articles">
+          <TopbarMenuItem active={active === 'articles'} to="/articles">
             <FontAwesomeIcon icon={faNewspaper} />
             <span>articles</span>
           </TopbarMenuItem>
-          <TopbarMenuItem to="/tags">
+          <TopbarMenuItem active={active === 'tags'} to="/tags">
             <FontAwesomeIcon icon={faTags} />
             <span>tags</span>
           </TopbarMenuItem>
-          <TopbarMenuItem to="/courses">
+          <TopbarMenuItem active={active === 'courses'} to="/courses">
             <FontAwesomeIcon icon={faChalkboardTeacher} />
             <span>courses</span>
           </TopbarMenuItem>

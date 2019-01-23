@@ -47,10 +47,10 @@ export const TopbarMenu = styled.div({
   ':hover': { [TopbarMenus]: { display: 'flex' } },
 })
 
-export const TopbarMenuItem = styled(Link)({
+export const TopbarMenuItem = styled(Link)(({ active }) => ({
   padding: 13,
   textDecoration: 'none',
-  color: '#f8f8f2',
+  color: active ? '#ff642e' : '#f8f8f2',
   fontFamily: "'IBM Plex Mono', monospace",
   svg: {
     fontSize: '1rem',
@@ -58,4 +58,4 @@ export const TopbarMenuItem = styled(Link)({
   span: {
     marginLeft: 10,
   },
-})
+}))

@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import { graphql, push } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import styled from '@emotion/styled'
 import transformColor from '../components/helpers/transformColor'
 
@@ -53,6 +53,7 @@ const ArticleCardDescription = styled.p({
   marginTop: '1.5rem',
   color: '#454545',
   fontSize: '1.2rem',
+  textAlign: 'left',
 })
 
 export default ({ data }) => {
@@ -69,7 +70,7 @@ export default ({ data }) => {
       >
         {posts.map(({ node }, i) => (
           <div key={i}>
-            <ArticleCard onClick={() => push(node.frontmatter.path)}>
+            <ArticleCard onClick={() => navigate(node.frontmatter.slug)}>
               <ArticleCardContent>
                 <ArticleCardTitle>{node.frontmatter.title}</ArticleCardTitle>
                 <ArticleCardDate>{node.frontmatter.date}</ArticleCardDate>
@@ -87,13 +88,16 @@ export default ({ data }) => {
 
 export const query = graphql`
   {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { published: { eq: true } } }
+    ) {
       edges {
         node {
           frontmatter {
             title
             description
-            path
+            slug
             date(formatString: "DD MMMM, YYYY")
           }
         }

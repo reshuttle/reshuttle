@@ -2,8 +2,12 @@
 title: 'Crazy Fast React Site with Server Side Rendering'
 description: 'Learn how to build React app with server-side rendering without tears 😭'
 date: '2019-01-24'
-slug: '/articles/crazy-fast-react-site-with-server-side-rendering'
-tags: ['react', 'ssr', 'javascript', 'node']
+slug: 'crazy-fast-react-site-with-server-side-rendering'
+tags:
+  - 'react'
+  - 'ssr'
+  - 'javascript'
+  - 'node'
 published: true
 ---
 

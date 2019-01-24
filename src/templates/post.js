@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import { DiscussionEmbed } from 'disqus-react'
 
 import Layout from '../components/Layout'
+import SEO from '../components/SEO'
 
 const Title = styled.h1({
   marginBottom: 0,
@@ -21,7 +22,8 @@ export default ({ data }) => {
   const post = data.markdownRemark
 
   return (
-    <Layout active="articles">
+    <Layout active="posts">
+      <SEO title={post.frontmatter.title} />
       <Title>{post.frontmatter.title}</Title>
       <Date>{post.frontmatter.date}</Date>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />

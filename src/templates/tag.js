@@ -2,12 +2,11 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import ArticleCard from '../components/ArticleCard'
 import styled from '@emotion/styled'
+import PostCard from '../components/PostCard'
 
 const Title = styled.h1({
   padding: 15,
-  textTransform: 'capitalize',
   backgroundColor: '#ccc',
   display: 'inline-block',
   fontFamily: "'IBM Plex Mono', monospace",
@@ -19,7 +18,7 @@ const Title = styled.h1({
 })
 
 export default ({ data, pageContext }) => {
-  const articles = data.allMarkdownRemark.edges
+  const posts = data.allMarkdownRemark.edges
 
   return (
     <Layout active="tags">
@@ -32,9 +31,9 @@ export default ({ data, pageContext }) => {
           marginTop: '1rem',
         }}
       >
-        {articles.map(({ node }, i) => (
+        {posts.map(({ node }, i) => (
           <div key={i}>
-            <ArticleCard {...node.frontmatter} />
+            <PostCard {...node.frontmatter} />
           </div>
         ))}
       </div>

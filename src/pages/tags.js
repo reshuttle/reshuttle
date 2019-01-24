@@ -4,6 +4,8 @@ import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import transformColor from '../components/helpers/transformColor'
 import { navigate } from 'gatsby'
+import SEO from '../components/SEO'
+import flattenArray from '../utils/flattenArray'
 
 const Tag = styled.div({
   padding: '3px 10px',
@@ -36,13 +38,13 @@ const Tag = styled.div({
 })
 
 export default ({ data }) => {
-  const tags = data.allMarkdownRemark.edges
-    .map(({ node }) => node.frontmatter.tags)
-    .flat()
-  console.log(tags)
+  const tags = flattenArray(
+    data.allMarkdownRemark.edges.map(({ node }) => node.frontmatter.tags),
+  )
 
   return (
     <Layout active="tags">
+      <SEO title="Tags" />
       <h1>Tags</h1>
       <div
         style={{

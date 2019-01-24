@@ -1,10 +1,12 @@
 import React from 'react'
-import Layout from '../components/Layout'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
-import ArticleCard from '../components/ArticleCard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrophy } from '@fortawesome/free-solid-svg-icons'
+
+import SEO from '../components/SEO'
+import Layout from '../components/Layout'
+import PostCard from '../components/PostCard'
 
 const HeaderTitle = styled.h1({
   textAlign: 'center',
@@ -27,6 +29,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Launch your app faster than ever" />
       <div style={{ maxWidth: 800, marginLeft: 'auto', marginRight: 'auto' }}>
         <HeaderTitle>Launch your app 🚀 faster than ever ⚡</HeaderTitle>
         <HeaderSubtitle>
@@ -36,7 +39,7 @@ export default ({ data }) => {
       </div>
       <Divider />
       <HeaderTitle>
-        <FontAwesomeIcon icon={faTrophy} /> Top articles
+        <FontAwesomeIcon icon={faTrophy} /> Top posts
       </HeaderTitle>
       <div
         style={{
@@ -48,7 +51,7 @@ export default ({ data }) => {
       >
         {posts.map(({ node }, i) => (
           <div key={i}>
-            <ArticleCard {...node.frontmatter} />
+            <PostCard {...node.frontmatter} />
           </div>
         ))}
       </div>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import algoliasearch from 'algoliasearch'
-
-import Layout from '../components/Layout'
-import ArticleCard from '../components/ArticleCard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons'
+
+import Layout from '../components/Layout'
+import PostCard from '../components/PostCard'
+import SEO from '../components/SEO'
 
 const SearchInput = styled.input({
   padding: 20,
@@ -37,31 +38,32 @@ export default () => {
     process.env.GATSBY_ALGOLIA_APP_ID,
     process.env.GATSBY_ALGOLIA_SEARCH_KEY,
   )
-  const index = client.initIndex('Articles')
+  const index = client.initIndex('Posts')
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(false)
-  const [articles, setArticles] = useState([])
+  const [posts, setPosts] = useState([])
 
-  async function getArticles() {
+  async function getPosts() {
     setLoading(true)
     const data = await index.search({ query: search })
     const result = data.hits
-    setArticles(result)
+    setPosts(result)
     setLoading(false)
   }
 
   useEffect(
     () => {
-      getArticles()
+      getPosts()
     },
     [search],
   )
 
   return (
     <Layout active="search">
+      <SEO title="Search posts, courses, tags, etc." />
       <div style={{ display: 'flex' }}>
         <SearchInput
-          placeholder="Find articles, courses, tags, etc."
+          placeholder="Find posts, courses, tags, etc."
           value={search}
           type="search"
           onChange={(e) => setSearch(e.target.value)}
@@ -80,9 +82,9 @@ export default () => {
             marginTop: '3rem',
           }}
         >
-          {articles.map((item, i) => (
+          {posts.map((item, i) => (
             <div key={i}>
-              <ArticleCard {...item} />
+              <PostCard {...item} />
             </div>
           ))}
         </div>

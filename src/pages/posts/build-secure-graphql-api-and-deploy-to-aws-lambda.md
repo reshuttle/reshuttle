@@ -2,9 +2,14 @@
 title: 'Build Secure GraphQL API and Deploy to AWS Lambda'
 description: 'Build a GraphQL API with authentication and deploy to AWS Lambda 🚀'
 date: '2019-01-26'
-slug: '/articles/build-secure-graphql-api-and-deploy-to-aws-lambda'
-tags: ['auth', 'graphql', 'node', 'aws', 'lambda']
-published: true
+slug: 'build-secure-graphql-api-and-deploy-to-aws-lambda'
+tags:
+  - auth
+  - graphql
+  - node
+  - aws
+  - lambda
+published: false
 ---
 
 ## Introduction
@@ -14,8 +19,7 @@ Building a secure APIs is the main job as a backend developer. But how does it w
 ## Prerequisites
 
 - A bit knowledge of Javascript & NodeJS
-- Have and AWS Account
-- A bit of time to read this article 😊
+- An [AWS](https://aws.amazon.com) account
 
 ## Getting Started
 

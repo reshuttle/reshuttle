@@ -1,6 +1,6 @@
-const articlesQuery = `
+const posts = `
   {
-    articles: allMarkdownRemark(
+    posts: allMarkdownRemark(
       filter: { frontmatter: { published: { eq: true } } }
     ) {
       edges {
@@ -30,9 +30,9 @@ const settings = { attributesToSnippet: [`excerpt:20`] }
 
 module.exports = [
   {
-    query: articlesQuery,
-    transformer: ({ data }) => flatten(data.articles.edges),
-    indexName: 'Articles',
+    query: posts,
+    transformer: ({ data }) => flatten(data.posts.edges),
+    indexName: 'Posts',
     settings,
   },
 ]

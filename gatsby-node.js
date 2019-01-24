@@ -11,7 +11,7 @@ function flatten(arr) {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const articles = await graphql(`
+  const posts = await graphql(`
     {
       allMarkdownRemark {
         edges {
@@ -25,10 +25,10 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  articles.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  posts.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
-      path: node.frontmatter.slug,
-      component: path.resolve(`./src/templates/article.js`),
+      path: '/posts/' + node.frontmatter.slug,
+      component: path.resolve(`./src/templates/post.js`),
       context: {
         slug: node.frontmatter.slug,
       },

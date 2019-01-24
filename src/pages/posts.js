@@ -1,14 +1,17 @@
 import React from 'react'
-import Layout from '../components/Layout'
 import { graphql } from 'gatsby'
-import ArticleCard from '../components/ArticleCard'
+
+import Layout from '../components/Layout'
+import SEO from '../components/SEO'
+import PostCard from '../components/PostCard'
 
 export default ({ data }) => {
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <Layout active="articles">
-      <h1>Read the latest articles</h1>
+    <Layout active="posts">
+      <SEO title="Posts" />
+      <h1>Latest posts</h1>
       <div
         style={{
           display: 'flex',
@@ -19,7 +22,7 @@ export default ({ data }) => {
       >
         {posts.map(({ node }, i) => (
           <div key={i}>
-            <ArticleCard {...node.frontmatter} />
+            <PostCard {...node.frontmatter} />
           </div>
         ))}
       </div>

@@ -31,9 +31,9 @@ export default ({ children, active }) => (
         <FontAwesomeIcon icon={faSearch} />
         <Tooltip>search</Tooltip>
       </SidebarItem>
-      <SidebarItem active={active === 'articles'} to="/articles">
+      <SidebarItem active={active === 'posts'} to="/posts">
         <FontAwesomeIcon icon={faNewspaper} />
-        <Tooltip>articles</Tooltip>
+        <Tooltip>posts</Tooltip>
       </SidebarItem>
       <SidebarItem active={active === 'tags'} to="/tags">
         <FontAwesomeIcon icon={faTags} />
@@ -56,9 +56,9 @@ export default ({ children, active }) => (
             <FontAwesomeIcon icon={faSearch} />
             <span>search</span>
           </TopbarMenuItem>
-          <TopbarMenuItem active={active === 'articles'} to="/articles">
+          <TopbarMenuItem active={active === 'posts'} to="/posts">
             <FontAwesomeIcon icon={faNewspaper} />
-            <span>articles</span>
+            <span>posts</span>
           </TopbarMenuItem>
           <TopbarMenuItem active={active === 'tags'} to="/tags">
             <FontAwesomeIcon icon={faTags} />

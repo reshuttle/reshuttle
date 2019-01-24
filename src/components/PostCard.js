@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 
 import transformColor from '../components/helpers/transformColor'
 
-const ArticleCard = styled.div({
+const PostCardContainer = styled.div({
   width: 450,
   backgroundColor: transformColor('#f5f0e5', -13),
   boxShadow: '0 0 10px ' + transformColor('#f5f0e5', -13),
@@ -31,24 +31,24 @@ const ArticleCard = styled.div({
   transitionTimingFunction: 'ease-out',
 })
 
-const ArticleCardContent = styled.div({
+const PostCardContent = styled.div({
   padding: 20,
 })
 
-const ArticleCardTitle = styled.h3({
+const PostCardTitle = styled.h3({
   marginTop: 0,
   marginBottom: '0.3rem',
   textDecoration: 'none',
   color: '#000',
 })
 
-const ArticleCardDate = styled.p({
+const PostCardDate = styled.p({
   margin: 0,
   color: '#454545',
   fontSize: '0.9rem',
 })
 
-const ArticleCardDescription = styled.p({
+const PostCardDescription = styled.p({
   margin: 0,
   marginTop: '1.5rem',
   color: '#454545',
@@ -66,16 +66,16 @@ const Tag = styled.div({
 })
 
 export default ({ slug, title, date, description, tags }) => (
-  <ArticleCard onClick={() => navigate(slug)}>
-    <ArticleCardContent>
-      <ArticleCardTitle>{title}</ArticleCardTitle>
-      <ArticleCardDate>{date}</ArticleCardDate>
-      <ArticleCardDescription>{description}</ArticleCardDescription>
+  <PostCardContainer onClick={() => navigate('/posts/' + slug)}>
+    <PostCardContent>
+      <PostCardTitle>{title}</PostCardTitle>
+      <PostCardDate>{date}</PostCardDate>
+      <PostCardDescription>{description}</PostCardDescription>
       <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '2rem' }}>
         {tags.map((tag, i) => (
           <Tag key={i}>#{tag}</Tag>
         ))}
       </div>
-    </ArticleCardContent>
-  </ArticleCard>
+    </PostCardContent>
+  </PostCardContainer>
 )

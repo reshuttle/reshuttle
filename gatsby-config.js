@@ -6,6 +6,7 @@ module.exports = {
     title: 'Reshuttle',
     description: 'Launch your apps faster than ever',
     author: 'Rahman Fadhil',
+    siteUrl: 'https://reshuttle.com',
   },
 
   plugins: [
@@ -48,7 +49,7 @@ module.exports = {
         trackingId: 'UA-133172956-1',
       },
     },
-
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-emotion',
   ],
 }

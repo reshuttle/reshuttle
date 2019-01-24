@@ -43,7 +43,7 @@ Unfortunately, server-side rendering comes with **one big problem**. It's very h
 ## Prerequisites
 
 - A bit knowledge of HTML & CSS
-- A bit knowledge of Javascript & NodeJS
+- A bit knowledge of Javascript & [NodeJS](https://nodejs.org)
 - A bit knowledge of ReactJS
 - A happy face 😊
 

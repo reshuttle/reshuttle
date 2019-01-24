@@ -8,7 +8,7 @@ export default ({ data }) => {
 
   return (
     <Layout active="articles">
-      <h1>Latest articles</h1>
+      <h1>Read the latest articles</h1>
       <div
         style={{
           display: 'flex',

@@ -1,7 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
 import styled from '@emotion/styled'
+import { DiscussionEmbed } from 'disqus-react'
+
+import Layout from '../components/Layout'
 
 const Title = styled.h1({
   marginBottom: 0,
@@ -23,6 +25,15 @@ export default ({ data }) => {
       <Title>{post.frontmatter.title}</Title>
       <Date>{post.frontmatter.date}</Date>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      {process.env.NODE_ENV === 'production' ? (
+        <DiscussionEmbed
+          shortname="reshuttle"
+          config={{
+            title: post.frontmatter.title,
+            identifier: post.id,
+          }}
+        />
+      ) : null}
     </Layout>
   )
 }
@@ -30,12 +41,12 @@ export default ({ data }) => {
 export const query = graphql`
   query($slug: String!) {
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      id
+      html
       frontmatter {
         title
         date(formatString: "DD MMMM, YYYY")
       }
-      html
-      htmlAst
     }
   }
 `

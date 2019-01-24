@@ -3,7 +3,7 @@ title: 'Crazy Fast React Site with Server Side Rendering'
 description: 'Learn how to build React app with server-side rendering without tears 😭'
 date: '2019-01-24'
 slug: '/articles/crazy-fast-react-site-with-server-side-rendering'
-tags: ['app', 'react', 'ssr', 'javascript']
+tags: ['react', 'ssr', 'javascript', 'node']
 published: true
 ---
 
@@ -45,13 +45,15 @@ Unfortunately, server-side rendering comes with **one big problem**. It's very h
 
 ## Getting Started
 
-```bash
-$ mkdir react-ssr-demo && cd react-ssr-demo
+I have prepared the boilerplate of this project. You can clone it, or you can follow along this tutorial step by step if you want.
 
-$ npm init
+```bash
+$ git clone https://github.com/reshuttle/react-ssr-demo
+
+$ npm install
 ```
 
-Clone the repository on github, then go into that folder. Run `npm install`. Then you will see something like this.
+Clone the repository on github, and go into that folder. Run `npm install`. Then you will see something like this.
 
 ```tree
 ├── server.js

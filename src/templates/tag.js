@@ -1,14 +1,29 @@
 import React from 'react'
-import Layout from '../components/Layout'
 import { graphql } from 'gatsby'
-import ArticleCard from '../components/ArticleCard'
 
-export default ({ data }) => {
-  const posts = data.allMarkdownRemark.edges
+import Layout from '../components/Layout'
+import ArticleCard from '../components/ArticleCard'
+import styled from '@emotion/styled'
+
+const Title = styled.h1({
+  padding: 15,
+  textTransform: 'capitalize',
+  backgroundColor: '#ccc',
+  display: 'inline-block',
+  fontFamily: "'IBM Plex Mono', monospace",
+  fontWeight: 400,
+  ':before': {
+    content: '"#"',
+    marginRight: 7,
+  },
+})
+
+export default ({ data, pageContext }) => {
+  const articles = data.allMarkdownRemark.edges
 
   return (
-    <Layout active="articles">
-      <h1>Latest articles</h1>
+    <Layout active="tags">
+      <Title>{pageContext.tag}</Title>
       <div
         style={{
           display: 'flex',
@@ -17,7 +32,7 @@ export default ({ data }) => {
           marginTop: '1rem',
         }}
       >
-        {posts.map(({ node }, i) => (
+        {articles.map(({ node }, i) => (
           <div key={i}>
             <ArticleCard {...node.frontmatter} />
           </div>
@@ -28,11 +43,8 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } } }
-    ) {
+  query($tag: String!) {
+    allMarkdownRemark(filter: { frontmatter: { tags: { eq: $tag } } }) {
       edges {
         node {
           frontmatter {

@@ -52,7 +52,7 @@ Unfortunately, server-side rendering comes with **one big problem**. It's very h
 I have prepared the boilerplate of this project. You can clone it, or you can follow along this tutorial step by step if you want.
 
 ```bash
-$ git clone https://github.com/reshuttle/react-ssr-demo
+$ git clone https://github.com/reshuttle/react-ssr-demo.git
 
 $ npm install
 ```

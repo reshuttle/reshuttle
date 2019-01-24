@@ -31,7 +31,7 @@ export default ({ data }) => {
     <Layout>
       <SEO title="Launch your app faster than ever" />
       <div style={{ maxWidth: 800, marginLeft: 'auto', marginRight: 'auto' }}>
-        <HeaderTitle>Launch your app 🚀 faster than ever ⚡</HeaderTitle>
+        <HeaderTitle>Launch your apps 🚀 faster than ever ⚡</HeaderTitle>
         <HeaderSubtitle>
           Reshuttle is a platform for learning and sharing about web
           technologies for those who want to build and launch high-quality apps

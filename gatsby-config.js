@@ -4,7 +4,7 @@ require('dotenv').config()
 module.exports = {
   siteMetadata: {
     title: 'Reshuttle',
-    description: 'Launch your app faster than ever',
+    description: 'Launch your apps faster than ever',
     author: 'Rahman Fadhil',
   },
 

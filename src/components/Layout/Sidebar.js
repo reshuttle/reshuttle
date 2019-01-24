@@ -41,6 +41,7 @@ export const SidebarItem = styled(Link)(({ active, header }) => ({
   svg: {
     WebkitTransition: '-webkit-transform .5s ease-in-out',
     transition: 'transform .5s ease-in-out',
+    fontSize: 'inherit',
   },
   ':hover': header
     ? {

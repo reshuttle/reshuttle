@@ -55,6 +55,21 @@ export default ({ data }) => {
           </div>
         ))}
       </div>
+      <Divider />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          flexDirection: 'column',
+          marginTop: '3rem',
+        }}
+      >
+        <p style={{ fontSize: '1rem', marginBottom: 10 }}>Copyright © 2019</p>
+        <p style={{ fontSize: '1rem', marginTop: 0 }}>
+          Build with ❤️ by Rahman Fadhil
+        </p>
+      </div>
     </Layout>
   )
 }

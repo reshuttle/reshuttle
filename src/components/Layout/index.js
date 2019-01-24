@@ -19,13 +19,14 @@ import {
   TopbarMenus,
   TopbarMenuItem,
 } from './Topbar'
+import Logo from './Logo'
 
 export default ({ children, active }) => (
   <>
     <GlobalStyles />
     <SidebarContainer>
       <SidebarItem header to="/">
-        <FontAwesomeIcon icon={faRocket} />
+        <Logo />
       </SidebarItem>
       <SidebarItem active={active === 'search'} to="/search">
         <FontAwesomeIcon icon={faSearch} />

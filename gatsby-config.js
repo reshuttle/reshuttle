@@ -42,6 +42,13 @@ module.exports = {
         chunkSize: 10000, // default: 1000
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-133172956-1',
+      },
+    },
+
     'gatsby-plugin-emotion',
   ],
 }

@@ -200,7 +200,7 @@ run run start
 
 Then, open your browser and go to [http://localhost:3000](http://localhost:3000), You will see something like this:
 
-![screenshot](/assets/crazy-fast-react-site-with-server-side-rendering.png)
+![screenshot](/assets/react-ssr-result.png)
 
 ## Conslusion
 

@@ -14,7 +14,7 @@ published: true
 
 ## Introduction
 
-Building a secure APIs is the main job as a backend developer. But how does it works when using GraphQL? And how to deploy it to AWS Lambda? Well, there are several approach we will dive into in this course. Will will learn how to build a simple **Bookstore API**. Then, we will implement **Authorization** to our API, and deploy it to AWS Lambda with Serverless Platform.
+Building a secure APIs is the main job as a backend developer. But how does it works when using GraphQL? And how to deploy it to AWS Lambda? Well, there are several approach we will dive into in this course. Will will learn how to build a simple API with GraphQL. Then, we will implement **Authorization** to our API, and deploy it to AWS Lambda with Serverless Platform.
 
 ## Prerequisites
 
@@ -48,13 +48,13 @@ const { GraphQLServerLambda } = require('graphql-yoga')
 
 const typeDefs = `
   type Query {
-    books: String! 
+    hello: String! 
   }
 `
 
 const resolvers = {
   Query: {
-    books: (_, { name }) => 'Hello world!',
+    hello: (_, { name }) => 'Hello world!',
   },
 }
 
@@ -67,7 +67,7 @@ exports.server = lambda.graphqlHandler
 exports.playground = lambda.playgroundHandler
 ```
 
-Now, we have a GraphQL Schema that has a `books` query which just returns a `Hello World` string. Then we've exported our **lambda and playground handler** which the AWS Lambda will looking for.
+Now, we have a GraphQL Schema that has a `hello` query which just returns a `Hello World` string. Then we've exported our **lambda and playground handler** which the AWS Lambda will looking for.
 
 ## Setting up Serverless
 
@@ -132,7 +132,7 @@ Then, click the **Lambda Service** on the AWS Services. You will see something l
 
 ![aws console lambda](/assets/aws-console-lambda.png)
 
-Now, you have two functions deployed. Great job! Let's move one to the more advanced topics.
+Now, you have two functions deployed. Great job! Let's move on to the more advanced topics.
 
 ## Authentication
 
@@ -149,6 +149,56 @@ When the user log in to the server, the server will respond to the client with a
 Many web apps use [JSON Web Token](https://jwt.io) (JWT) instead of sessions for authentication. In that way, the user state is stored inside the token, instead of the server. Most of the modern apps use this approach, because of the scalability and mobile device authentication.
 
 ![comparison](/assets/cookie-token-auth.png)
+
+## GraphQL Middleware
+
+If you have already familiar with frameworks like [Express](https://expressjs.com/), [Koa](https://koajs.com/), and [Hapi](https://hapijs.com), you must have heard about **middleware**. Basically, it's a function which will be triggered everytime the client request to the server. GraphQL Yoga has it own implementation of the middleware function.
+
+### GraphQL Shield
+
+Another third party library which we will use is [GraphQL Shield](https://github.com/maticzav/graphql-shield). It's a cool library that helps us to create **permissions layer** in our GraphQL API. Let's use it in `middleware.js` file.
+
+```js
+const { rule, shield } = require('graphql-shield')
+
+const isAuthenticated = rule()(async (parent, args, ctx, info) => {
+  return ctx.userId !== null
+})
+
+const permissions = shield({
+  Query: { secret: isAuthenticated },
+})
+
+module.exports = [permissions]
+```
+
+In this case, we check the user state (authenticated or not) by checking the `ctx.user`. But what does it mean? GraphQL has a feature called **resolver context**, which is a **set of data** that could be retrieved across resolvers. But where is the context data came from? Let's jump to the next section.
+
+### GraphQL Context
+
+To get the current user state, let's jump to the `handler.js` and add few things.
+
+```js
+// ...
+
+const jwt = require('jsonwebtoken')
+
+// ...
+
+const lambda = new GraphQLServerLambda({
+  typeDefs,
+  resolvers,
+  context: ({ req }) => {
+    const token = req.headers.authorization
+    const { id } = jwt.verify(token, 'your secret code')
+    return { userId: id }
+  },
+})
+
+// ...
+```
+
+In the context function, we get the authorization token from the headers. Then, we extract the token to get the user id. Finally, we return the `userId` which we use in our middleware function.
 
 ## Conclusion
 

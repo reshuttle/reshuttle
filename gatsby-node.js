@@ -37,7 +37,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const tags = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: { frontmatter: { published: { eq: true } } }) {
         edges {
           node {
             frontmatter {

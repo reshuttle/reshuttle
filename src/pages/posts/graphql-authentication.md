@@ -2,7 +2,7 @@
 title: 'Build Secure GraphQL API and Deploy to AWS'
 description: 'Build a GraphQL API with authentication and deploy to AWS Lambda 🚀'
 date: '2019-01-26'
-slug: 'graphql-authentication'
+slug: 'graphql-authentication-with-aws-lambda'
 tags:
   - auth
   - graphql
@@ -35,7 +35,11 @@ $ npm install
 Clone the repository on github, and go into that folder. Run `npm install`. Then you will see something like this.
 
 ```tree
-project structure
+├── handler.js
+├── middlewares.js
+├── package.json
+├── serverless.yml
+└── yarn.lock
 ```
 
 ## Setting up our GraphQL Server

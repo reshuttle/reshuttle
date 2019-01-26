@@ -2,8 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrophy } from '@fortawesome/free-solid-svg-icons'
-import Helmet from 'react-helmet'
+import { faReact } from '@fortawesome/free-brands-svg-icons'
 
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
@@ -31,12 +30,6 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO title="Launch your app faster than ever" />
-      <Helmet>
-        <meta
-          name="google-site-verification"
-          content="Setj1C6Ixea4bthnnjUcnSozaWQLBt-7FjDZzyzhhQ0"
-        />
-      </Helmet>
       <div style={{ maxWidth: 800, marginLeft: 'auto', marginRight: 'auto' }}>
         <HeaderTitle>Launch your apps 🚀 faster than ever ⚡</HeaderTitle>
         <HeaderSubtitle>
@@ -45,9 +38,7 @@ export default ({ data }) => {
         </HeaderSubtitle>
       </div>
       <Divider />
-      <HeaderTitle>
-        <FontAwesomeIcon icon={faTrophy} /> Top posts
-      </HeaderTitle>
+      <HeaderTitle>Top posts 🏆</HeaderTitle>
       <div
         style={{
           display: 'flex',
@@ -72,10 +63,11 @@ export default ({ data }) => {
           marginTop: '3rem',
         }}
       >
-        <p style={{ fontSize: '1rem', marginBottom: 10 }}>Copyright © 2019</p>
-        {/* <p style={{ fontSize: '1rem', marginTop: 0 }}>
-          Build with ❤️ by Rahman Fadhil
-        </p> */}
+        <p style={{ fontSize: '1rem', margin: 0 }}>Copyright © 2019</p>
+        <p style={{ fontSize: '1rem', marginTop: 0 }}>
+          Build with <FontAwesomeIcon icon={faReact} /> by{' '}
+          <a href="https://github.com/rahmanfadhil">Rahman Fadhil</a>
+        </p>
       </div>
     </Layout>
   )

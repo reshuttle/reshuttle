@@ -1,11 +1,13 @@
 import React from 'react'
-import Layout from '../components/Layout'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
-import transformColor from '../components/helpers/transformColor'
 import { navigate } from 'gatsby'
-import SEO from '../components/SEO'
+import uniq from 'lodash/uniq'
+
+import Layout from '../components/Layout'
+import transformColor from '../components/helpers/transformColor'
 import flattenArray from '../utils/flattenArray'
+import SEO from '../components/SEO'
 
 const Tag = styled.div({
   padding: '3px 10px',
@@ -38,8 +40,10 @@ const Tag = styled.div({
 })
 
 export default ({ data }) => {
-  const tags = flattenArray(
-    data.allMarkdownRemark.edges.map(({ node }) => node.frontmatter.tags),
+  const tags = uniq(
+    flattenArray(
+      data.allMarkdownRemark.edges.map(({ node }) => node.frontmatter.tags),
+    ),
   )
 
   return (

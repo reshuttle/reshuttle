@@ -1,8 +1,8 @@
 ---
-title: 'Build Secure GraphQL API and Deploy to AWS Lambda'
+title: 'Build Secure GraphQL API and Deploy to AWS'
 description: 'Build a GraphQL API with authentication and deploy to AWS Lambda 🚀'
 date: '2019-01-26'
-slug: 'build-secure-graphql-api-and-deploy-to-aws-lambda'
+slug: 'graphql-authentication'
 tags:
   - auth
   - graphql
@@ -54,7 +54,7 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    hello: (_, { name }) => 'Hello world!',
+    hello: () => 'Hello world!',
   },
 }
 
@@ -150,19 +150,61 @@ Many web apps use [JSON Web Token](https://jwt.io) (JWT) instead of sessions for
 
 ![comparison](/assets/cookie-token-auth.png)
 
+## Setting up users
+
+Before we get started, we need to set up a few mock users that we will use to perform authentication. Let's add few things to our `handler.js`.
+
+```js
+// ...
+
+const jwt = require('jsonwebtoken')
+
+// ...
+
+const users = [
+  { id: 1, name: 'John Doe', email: 'johndoe@gmail.com' },
+  { id: 2, name: 'Jane Doe', email: 'janedoe@gmail.com' },
+]
+
+const typeDefs = `
+  type Query {
+    login(email: String!): String!
+    secret: String!
+  }
+`
+
+const resolvers = {
+  Query: {
+    login: (_, { email }) => {
+      const user = users.find((user) => user.email === email)
+      if (!user) throw new Error('User not found!')
+      const token = jwt.sign({ id: user.id }, 'your secret key')
+      return token
+    },
+    secret: () => 'Secret data',
+  },
+}
+
+// ...
+```
+
+> In this case, the user data doesn't store in any database and we don't use password to login yet. To build the production API, you need to consider using [bcrypt](https://www.npmjs.com/package/bcrypt) for passsword hashing.
+
+Now we have the mock users data, and there are `secret` field in our query which just return a string. But, we want to **secure** this field so only the authenticated users can query this field. Then, we have the login query which return a token. The token contains the `id` of the user which we will use it later. So let's jump to the next section.
+
 ## GraphQL Middleware
 
 If you have already familiar with frameworks like [Express](https://expressjs.com/), [Koa](https://koajs.com/), and [Hapi](https://hapijs.com), you must have heard about **middleware**. Basically, it's a function which will be triggered everytime the client request to the server. GraphQL Yoga has it own implementation of the middleware function.
 
 ### GraphQL Shield
 
-Another third party library which we will use is [GraphQL Shield](https://github.com/maticzav/graphql-shield). It's a cool library that helps us to create **permissions layer** in our GraphQL API. Let's use it in `middleware.js` file.
+Another third party library which we will use is [GraphQL Shield](https://github.com/maticzav/graphql-shield). It's a cool library that helps us to create **permissions layer** in our GraphQL API. Let's use it in `middlewares.js` file.
 
 ```js
 const { rule, shield } = require('graphql-shield')
 
 const isAuthenticated = rule()(async (parent, args, ctx, info) => {
-  return ctx.userId !== null
+  return Boolean(ctx.userId)
 })
 
 const permissions = shield({
@@ -182,23 +224,31 @@ To get the current user state, let's jump to the `handler.js` and add few things
 // ...
 
 const jwt = require('jsonwebtoken')
+const middlewares = require('./middlewares')
 
 // ...
 
 const lambda = new GraphQLServerLambda({
   typeDefs,
   resolvers,
-  context: ({ req }) => {
-    const token = req.headers.authorization
-    const { id } = jwt.verify(token, 'your secret code')
-    return { userId: id }
+  middlewares: middlewares,
+  context: (req) => {
+    const token = req.event.headers.authorization
+    if (token) {
+      const { id } = jwt.verify(token, 'your secret key')
+      return { ...req, userId: id }
+    } else {
+      return { ...req }
+    }
   },
 })
 
 // ...
 ```
 
-In the context function, we get the authorization token from the headers. Then, we extract the token to get the user id. Finally, we return the `userId` which we use in our middleware function.
+Now, we're using the middlewares that we require from `middleware.js`. In the context function, First, we check if the client pass the token through the **request headers**. If the user pass the token, we extract the token to get the `id` of the user. Finally, we return the `userId` which we use in our middleware function.
+
+Let's test if our middewares works.
 
 ## Conclusion
 

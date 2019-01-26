@@ -1,8 +1,8 @@
 ---
-title: 'Crazy Fast React Site with Server Side Rendering'
-description: 'Learn how to build React app with server-side rendering without tears 😭'
+title: 'Build Server Rendered React App from Scratch'
+description: 'Learn how to build a React site with server-side rendering'
 date: '2019-01-24'
-slug: 'crazy-fast-react-site-with-server-side-rendering'
+slug: 'react-server-side-rendering'
 tags:
   - 'react'
   - 'ssr'
@@ -15,9 +15,9 @@ published: true
 
 If you have playing around with [**React**](https://reactjs.org) for a while, and you start to planning a production web app, you may need to considering about the performance and SEO for your web app. And that problem can be solved by server-side rendering. Even there are many different approach to achieve better performance on **client-side rendering**, it might **not be a good solution** for low-powered devices such as an old phone.
 
-### What's make it crazy fast?
+### What's make it so fast?
 
-On the client-side rendering approach, A typical response sent by the server when requesting a React site will look something like this:
+On the client-side rendering, also known as **single page app**, A typical response sent by the server when requesting a React site will look something like this:
 
 ```html
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ On the client-side rendering approach, A typical response sent by the server whe
 
 After fetching this response, our browser need to fetch the bundled javascript code which in this case is `/app.js`. Then, the browser will render our React components to the DOM. So the performance will depends on your internet connection and CPU power. See? This approach takes a lot of times even until the users can see the actual page looks like.
 
-On the other hand, server-side rendering use the server to render our React components. That's what makes it _CRAZY FAST ⚡_. So the users can immediately see the page content, even before the browser gets the bundled javascript.
+On the other hand, server-side rendering use the server to render our React components. That's what makes it faster than the single page app. So the users can immediately see the page content, even before the browser gets the bundled javascript.
 
 Unfortunately, server-side rendering comes with **one big problem**. It's very hard to configure from scratch. Also, you need to make sure that your javascript code could run by the server and the browser, and that's not a good story. For example, you can't use localStorage **directly** to your app, instead, you need to check whether it's run on the browser or server. But if you really want to spend much time and effort to get better performance and SEO, it might be a good choice.
 

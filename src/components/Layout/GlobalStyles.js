@@ -82,6 +82,7 @@ export default () => (
 
         p {
           margin: 0px;
+          font-style: italic;
         }
       }
 

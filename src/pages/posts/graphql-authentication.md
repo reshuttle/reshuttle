@@ -108,7 +108,7 @@ Then, we are now using the [serverless-offline](https://github.com/dherault/serv
 
 You can run the serverless-offline by running `yarn start` in the command line. By default, it will started at [http://localhost:3000](http://localhost:3000). Then, you will see something like this.
 
-![graphql-playground](/assets/graphql-playground.png)
+![graphql-playground](/assets/graphql-authentication/graphql-playground.png)
 
 ## Deployment 🚀
 
@@ -126,11 +126,11 @@ $ serverless invoke -f graphql -l
 
 After the deployment is done, login to your [AWS Console](https://console.aws.amazon.com).
 
-![aws console](/assets/aws-console.png)
+![aws console](/assets/graphql-authentication/aws-console.png)
 
 Then, click the **Lambda Service** on the AWS Services. You will see something like this.
 
-![aws console lambda](/assets/aws-console-lambda.png)
+![aws console lambda](/assets/graphql-authentication/aws-console-lambda.png)
 
 Now, you have two functions deployed. Great job! Let's move on to the more advanced topics.
 
@@ -148,7 +148,7 @@ When the user log in to the server, the server will respond to the client with a
 
 Many web apps use [JSON Web Token](https://jwt.io) (JWT) instead of sessions for authentication. In that way, the user state is stored inside the token, instead of the server. Most of the modern apps use this approach, because of the scalability and mobile device authentication.
 
-![comparison](/assets/cookie-token-auth.png)
+![comparison](/assets/graphql-authentication/cookie-token-auth.png)
 
 ## Setting up users
 
@@ -249,6 +249,18 @@ const lambda = new GraphQLServerLambda({
 Now, we're using the middlewares that we require from `middleware.js`. In the context function, First, we check if the client pass the token through the **request headers**. If the user pass the token, we extract the token to get the `id` of the user. Finally, we return the `userId` which we use in our middleware function.
 
 Let's test if our middewares works.
+
+If you access secret without token. The server will throw an error:
+
+![not authorised](/assets/graphql-authentication/not-authorised.png)
+
+You can get the token by logging in with the email:
+
+![get token](/assets/graphql-authentication/get-token.png)
+
+You can access the secret field if you insert the token to the headers:
+
+![accessing secret](/assets/graphql-authentication/accessing-secret.png)
 
 ## Conclusion
 

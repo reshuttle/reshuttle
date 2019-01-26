@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrophy } from '@fortawesome/free-solid-svg-icons'
+import Helmet from 'react-helmet'
 
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
@@ -30,6 +31,12 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO title="Launch your app faster than ever" />
+      <Helmet>
+        <meta
+          name="google-site-verification"
+          content="Setj1C6Ixea4bthnnjUcnSozaWQLBt-7FjDZzyzhhQ0"
+        />
+      </Helmet>
       <div style={{ maxWidth: 800, marginLeft: 'auto', marginRight: 'auto' }}>
         <HeaderTitle>Launch your apps 🚀 faster than ever ⚡</HeaderTitle>
         <HeaderSubtitle>

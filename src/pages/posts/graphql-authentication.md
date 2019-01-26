@@ -250,15 +250,15 @@ Now, we're using the middlewares that we require from `middleware.js`. In the co
 
 Let's test if our middewares works.
 
-If you access secret without token. The server will throw an error:
+**If you access secret without token. The server will throw an error:**
 
 ![not authorised](/assets/graphql-authentication/not-authorised.png)
 
-You can get the token by logging in with the email:
+**You can get the token by logging in with the email:**
 
 ![get token](/assets/graphql-authentication/get-token.png)
 
-You can access the secret field if you insert the token to the headers:
+**You can access the secret field if you insert the token to the headers:**
 
 ![accessing secret](/assets/graphql-authentication/accessing-secret.png)
 

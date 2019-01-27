@@ -1,5 +1,5 @@
 import React from 'react'
-import { navigate } from 'gatsby'
+import { Link } from 'gatsby'
 import styled from '@emotion/styled'
 
 import transformColor from '../components/helpers/transformColor'
@@ -63,19 +63,22 @@ const Tag = styled.div({
   fontSize: '0.9rem',
   marginRight: 5,
   marginBottom: 5,
+  color: '#000',
 })
 
 export default ({ slug, title, date, description, tags }) => (
-  <PostCardContainer onClick={() => navigate('/posts/' + slug)}>
-    <PostCardContent>
-      <PostCardTitle>{title}</PostCardTitle>
-      <PostCardDate>{date}</PostCardDate>
-      <PostCardDescription>{description}</PostCardDescription>
-      <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '2rem' }}>
-        {tags.map((tag, i) => (
-          <Tag key={i}>#{tag}</Tag>
-        ))}
-      </div>
-    </PostCardContent>
-  </PostCardContainer>
+  <Link to={'/posts/' + slug} style={{ textDecoration: 'none' }}>
+    <PostCardContainer>
+      <PostCardContent>
+        <PostCardTitle>{title}</PostCardTitle>
+        <PostCardDate>{date}</PostCardDate>
+        <PostCardDescription>{description}</PostCardDescription>
+        <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '2rem' }}>
+          {tags.map((tag, i) => (
+            <Tag key={i}>#{tag}</Tag>
+          ))}
+        </div>
+      </PostCardContent>
+    </PostCardContainer>
+  </Link>
 )

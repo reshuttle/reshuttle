@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { graphql } from 'gatsby'
-import { navigate } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import uniq from 'lodash/uniq'
 
 import Layout from '../components/Layout'
@@ -9,7 +8,7 @@ import transformColor from '../components/helpers/transformColor'
 import flattenArray from '../utils/flattenArray'
 import SEO from '../components/SEO'
 
-const Tag = styled.div({
+const Tag = styled(Link)({
   padding: '3px 10px',
   backgroundColor: '#ccc',
   fontFamily: "'IBM Plex Mono', monospace",
@@ -17,6 +16,7 @@ const Tag = styled.div({
   marginRight: 10,
   marginBottom: 10,
   cursor: 'pointer',
+  color: '#000',
   ':before': {
     content: '"#"',
     marginRight: 5,
@@ -26,6 +26,7 @@ const Tag = styled.div({
     backgroundColor: transformColor('#cccccc', 20),
     WebkitTransform: 'translateY(-5px)',
     transform: 'translateY(-5px)',
+    textDecoration: 'none',
   },
 
   // Hover float
@@ -59,7 +60,7 @@ export default ({ data }) => {
         }}
       >
         {tags.map((tag, i) => (
-          <Tag onClick={() => navigate('/tags/' + tag)} key={i}>
+          <Tag to={'/tags/' + tag} key={i}>
             {tag}
           </Tag>
         ))}

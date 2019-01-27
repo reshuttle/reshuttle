@@ -47,7 +47,7 @@ Unfortunately, server-side rendering comes with **one big problem**. It's very h
 - A bit knowledge of ReactJS
 - A happy face 😊
 
-## Getting Started
+## Getting started
 
 I have prepared the boilerplate of this project. You can clone it, or you can follow along this tutorial step by step if you want.
 

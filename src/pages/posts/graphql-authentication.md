@@ -22,7 +22,7 @@ Building a secure APIs is the main job as a backend developer. But how does it w
 - [Serverless CLI](https://serverless.com/framework/docs/getting-started) Installed on your machine
 - An [AWS](https://aws.amazon.com) account
 
-## Getting Started
+## Getting started
 
 I have prepared the boilerplate of this project. You can clone it, or you can follow along this tutorial step by step if you want.
 
@@ -192,7 +192,7 @@ const resolvers = {
 // ...
 ```
 
-> In this case, the user data doesn't store in any database and we don't use password to login yet. To build the production API, you need to consider using [bcrypt](https://www.npmjs.com/package/bcrypt) for passsword hashing.
+> In this case, the user data doesn't stored to any database and we don't use password to login yet. To build the production API, you need to consider using [bcrypt](https://www.npmjs.com/package/bcrypt) for passsword hashing.
 
 Now we have the mock users data, and there are `secret` field in our query which just return a string. But, we want to **secure** this field so only the authenticated users can query this field. Then, we have the login query which return a token. The token contains the `id` of the user which we will use it later. So let's jump to the next section.
 
@@ -252,7 +252,9 @@ const lambda = new GraphQLServerLambda({
 
 Now, we're using the middlewares that we require from `middleware.js`. In the context function, First, we check if the client pass the token through the **request headers**. If the user pass the token, we extract the token to get the `id` of the user. Finally, we return the `userId` which we use in our middleware function.
 
-Let's test if our middewares works.
+## Testing out our server
+
+Let's test if our server works.
 
 **If you access secret without token. The server will throw an error:**
 

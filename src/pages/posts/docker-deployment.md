@@ -1,5 +1,5 @@
 ---
-title: 'Deploy Containerized Docker Apps with Dokku'
+title: 'Deploy Your Docker Container with Dokku'
 description: 'How to automate your docker deployment with Dokku PaaS'
 date: '2019-01-27'
 slug: 'docker-deployment-with-dokku'
@@ -19,11 +19,32 @@ Its just like **Virtual Machine**. But the big difference is that Virtual Machin
 
 ![vm vs docker](/assets/docker-deployment/vm-vs-docker.jpg)
 
+[Dokku](http://dokku.viewdocs.io/dokku/) is an open-source self-hosted Platform as a Service (PaaS) that helps you to deploy your own applications. Dokku offers a lot of cool features like [Git](https://git-scm.com) deployment, Port and Proxy management, and easy-to-use Plugins such as databases, in-memory store, etc.
+
+In this tutorial, we will learn how to deploy your containerized application with Dokku to your Virtual Private Server (VPS).
+
 ## Prerequisites
 
-- [Docker](https://docs.docker.com/install/) and [NodeJS](https://nodejs.org) installed on your machine.
+- [Docker](https://docs.docker.com/install/) installed on your machine.
 - A [Docker Hub](https://hub.docker.com) account.
+- A Virtual Private Server.
 
 ## Getting Started
 
-hello
+I have prepared the boilerplate of this project. You can clone it, or you can follow along this tutorial step by step if you want.
+
+```bash
+$ git clone https://github.com/reshuttle/docker-dokku-demo.git
+
+$ npm install
+```
+
+Clone the repository on github, and go into that folder. Run `npm install`. Then you will see something like this.
+
+```tree
+├── handler.js
+├── middlewares.js
+├── package.json
+├── serverless.yml
+└── yarn.lock
+```

@@ -6,7 +6,7 @@ slug: 'docker-deployment-with-dokku'
 tags:
   - docker
   - dokku
-  - node
+  - nginx
   - digitalocean
 published: false
 ---
@@ -48,3 +48,7 @@ Clone the repository on github, and go into that folder. Run `npm install`. Then
 ├── serverless.yml
 └── yarn.lock
 ```
+
+## Conslusion
+
+Docker is a great tool to learn in 2019, specially if you want to be a fullstack developer. Don't care what programming language you develop, what libraries you use, everything can be done with Docker. But deploying a docker container is not that easy, so Dokku make our life easier.

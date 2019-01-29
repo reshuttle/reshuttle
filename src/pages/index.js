@@ -7,11 +7,14 @@ import { faReact } from '@fortawesome/free-brands-svg-icons'
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
+import transformColor from '../components/helpers/transformColor'
 
-const HeaderTitle = styled.h1({
+const HeaderTitle = styled.h1(({ small }) => ({
   textAlign: 'center',
+  fontSize: small ? '2.1rem' : '2.5rem',
   svg: { fontSize: '2rem' },
-})
+}))
+
 const HeaderSubtitle = styled.p({
   textAlign: 'center',
   marginTop: 0,
@@ -24,6 +27,38 @@ const Divider = styled.hr({
   marginBottom: '3rem',
 })
 
+const EmailInput = styled.input({
+  padding: 15,
+  marginRight: '1.5rem',
+  border: 'none',
+  backgroundColor: 'transparent',
+  borderBottom: '2px solid #ccc',
+  fontFamily: "'IBM Plex Mono', monospace",
+  fontSize: '1.2rem',
+  width: 250,
+  outline: 0,
+  ':focus': {
+    borderBottom: '2px solid #ff642e',
+  },
+})
+
+const EmailButton = styled.button({
+  backgroundColor: '#ff642e',
+  border: 'none',
+  padding: '0 1.5rem',
+  fontFamily: "'IBM Plex Mono', monospace",
+  fontSize: '1.2rem',
+  color: '#fff',
+  cursor: 'pointer',
+  outline: 'none',
+  ':hover': {
+    backgroundColor: transformColor('#ff642e', 20),
+  },
+  ':active': {
+    backgroundColor: transformColor('#ff642e', 40),
+  },
+})
+
 export default ({ data }) => {
   const posts = data.allMarkdownRemark.edges
 
@@ -33,12 +68,13 @@ export default ({ data }) => {
       <div style={{ maxWidth: 800, marginLeft: 'auto', marginRight: 'auto' }}>
         <HeaderTitle>Launch your apps 🚀 faster than ever ⚡</HeaderTitle>
         <HeaderSubtitle>
-          Reshuttle is a platform for learning and sharing about web
-          technologies for those who want to build and launch high-quality apps
+          Reshuttle is a platform for{' '}
+          <b>learning and sharing about web technologies</b> for those who want
+          to build and launch high-quality apps
         </HeaderSubtitle>
       </div>
       <Divider />
-      <HeaderTitle>Top posts 🏆</HeaderTitle>
+      <HeaderTitle small>Top posts 🏆</HeaderTitle>
       <div
         style={{
           display: 'flex',
@@ -53,6 +89,20 @@ export default ({ data }) => {
           </div>
         ))}
       </div>
+      <Divider />
+      <div style={{ maxWidth: 800, marginLeft: 'auto', marginRight: 'auto' }}>
+        <HeaderTitle small>Free updates every week 🔔</HeaderTitle>
+        <HeaderSubtitle>
+          Subscribe to our newsletter to recieve future interesting updates.
+        </HeaderSubtitle>
+      </div>
+      <form name="subscribe" method="POST" data-netlify="true">
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <EmailInput type="text" name="name" placeholder="Your Name" />
+          <EmailInput type="email" name="email" placeholder="Your E-Mail" />
+          <EmailButton type="submit">Subscribe</EmailButton>
+        </div>
+      </form>
       <Divider />
       <div
         style={{

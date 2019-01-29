@@ -11,7 +11,8 @@ export default () => (
         background-color: #f5f0e5;
       }
 
-      strong {
+      strong,
+      b {
         font-weight: 700;
       }
 
@@ -97,8 +98,10 @@ export default () => (
       }
 
       img {
+        display: block;
+        margin: 3rem auto;
         box-shadow: 0 0 10px #444c5e;
-        width: 100%;
+        width: 75%;
       }
     `}
   />

@@ -16,46 +16,56 @@ export const SidebarContainer = styled.div({
   boxShadow: '0 0 10px #444C5E',
 })
 
-export const SidebarItem = styled(Link)(({ active, header }) => ({
-  display: 'flex',
-  justifyContent: 'center',
-  marginBottom: 5,
-  padding: 20,
-  fontSize: '1.7rem',
-  color: '#f8f8f2',
-  cursor: 'pointer',
-  position: 'relative',
-  backgroundColor: header ? '#ff642e' : 'transparent',
-  ':after': {
-    position: 'absolute',
-    content: '""',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: '#ff642e',
-    width: active ? 5 : 0,
-    marginTop: 15,
-    marginBottom: 15,
-  },
-  svg: {
-    WebkitTransition: '-webkit-transform .5s ease-in-out',
-    transition: 'transform .5s ease-in-out',
-    fontSize: 'inherit',
-  },
-  ':hover': header
-    ? {
-        svg: {
-          WebkitTransform: 'rotate(360deg)',
-          transform: 'rotate(360deg)',
+export const SidebarItem = styled(Link)(
+  ({ active, header }) => ({
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: 5,
+    padding: 20,
+    fontSize: '1.7rem',
+    color: '#f8f8f2',
+    cursor: 'pointer',
+    position: 'relative',
+    backgroundColor: header ? '#ff642e' : 'transparent',
+    ':after': {
+      position: 'absolute',
+      content: '""',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: '#ff642e',
+      width: active ? 5 : 0,
+      marginTop: 15,
+      marginBottom: 15,
+    },
+    svg: {
+      WebkitTransition: '-webkit-transform .5s ease-in-out',
+      transition: 'transform .5s ease-in-out',
+      fontSize: 'inherit',
+    },
+    ':hover': header
+      ? {
+          svg: {
+            WebkitTransform: 'rotate(360deg)',
+            transform: 'rotate(360deg)',
+          },
+        }
+      : {
+          [Tooltip]: {
+            visibility: 'visible',
+          },
         },
-      }
-    : {
-        [Tooltip]: {
-          visibility: 'visible',
-        },
-      },
-}))
+  }),
+  ({ header }) =>
+    header
+      ? {
+          ':active': {
+            backgroundColor: transformColor('#ff642e', 20),
+          },
+        }
+      : {},
+)
 
 export const Tooltip = styled.span({
   visibility: 'hidden',

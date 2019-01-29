@@ -96,7 +96,7 @@ export default ({ data }) => {
           Subscribe to our newsletter to recieve future interesting updates.
         </HeaderSubtitle>
       </div>
-      <form action="/" name="subscribe" method="POST" data-netlify="true">
+      <form action="/" name="subscribe" method="post" data-netlify="true">
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <EmailInput type="text" name="name" placeholder="Your Name" />
           <EmailInput type="email" name="email" placeholder="Your E-Mail" />

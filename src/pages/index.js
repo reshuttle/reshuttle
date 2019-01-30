@@ -7,7 +7,6 @@ import { faReact } from '@fortawesome/free-brands-svg-icons'
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
-import transformColor from '../components/helpers/transformColor'
 
 const HeaderTitle = styled.h1(({ small }) => ({
   textAlign: 'center',
@@ -25,38 +24,6 @@ const Divider = styled.hr({
   marginRight: 130,
   marginTop: '3rem',
   marginBottom: '3rem',
-})
-
-const EmailInput = styled.input({
-  padding: 15,
-  marginRight: '1.5rem',
-  border: 'none',
-  backgroundColor: 'transparent',
-  borderBottom: '2px solid #ccc',
-  fontFamily: "'IBM Plex Mono', monospace",
-  fontSize: '1.2rem',
-  width: 250,
-  outline: 0,
-  ':focus': {
-    borderBottom: '2px solid #ff642e',
-  },
-})
-
-const EmailButton = styled.button({
-  backgroundColor: '#ff642e',
-  border: 'none',
-  padding: '0 1.5rem',
-  fontFamily: "'IBM Plex Mono', monospace",
-  fontSize: '1.2rem',
-  color: '#fff',
-  cursor: 'pointer',
-  outline: 'none',
-  ':hover': {
-    backgroundColor: transformColor('#ff642e', 20),
-  },
-  ':active': {
-    backgroundColor: transformColor('#ff642e', 40),
-  },
 })
 
 export default ({ data }) => {
@@ -89,25 +56,6 @@ export default ({ data }) => {
           </div>
         ))}
       </div>
-      <Divider />
-      <div style={{ maxWidth: 800, marginLeft: 'auto', marginRight: 'auto' }}>
-        <HeaderTitle small>Free updates every week 🔔</HeaderTitle>
-        <HeaderSubtitle>
-          Subscribe to our newsletter to recieve future interesting updates.
-        </HeaderSubtitle>
-      </div>
-      <form
-        name="subscribe"
-        method="post"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <EmailInput type="text" name="name" placeholder="Your Name" />
-          <EmailInput type="email" name="email" placeholder="Your E-Mail" />
-          <EmailButton type="submit">Subscribe</EmailButton>
-        </div>
-      </form>
       <Divider />
       <div
         style={{

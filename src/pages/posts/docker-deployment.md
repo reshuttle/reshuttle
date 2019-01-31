@@ -8,7 +8,7 @@ tags:
   - dokku
   - nginx
   - vps
-published: false
+published: true
 ---
 
 ## Introduction
@@ -152,7 +152,7 @@ Make sure the operating system that you are using on your server is **Linux**, b
 If you already have a VPS, let's install dokku on your machine. First, access your server (you can use it via [SSH](https://www.ssh.com)).
 
 ```bash
-$ ssh root@<your-server-ip-address>
+$ ssh root@<your-server-ip>
 ```
 
 Then, visit the [Dokku Homepage](http://dokku.viewdocs.io/dokku/) to see the installation guide. Match with the operating system you use in your server.
@@ -163,7 +163,35 @@ After Dokku installed on your server, access your VPS ip address. You will the t
 
 ## Deployment
 
-hello
+To do this, we are going to use the [Git Deployment](http://dokku.viewdocs.io/dokku/deployment/methods/dockerfiles/) feature that Dokku offers. To use this feature, make sure that you have initialized Git repository to your project. To check if your project is already initialized, you can run `git status`.
+
+```bash
+$ git init
+```
+
+Then, Access your VPS via SSH and create a new Dokky application by running following command.
+
+```bash
+$ ssh root@<your-server-ip>
+
+$ dokku apps:create <your-app-name>
+```
+
+If your application need to store data into database, you can do it by adding plugins to your Dokku apps. There are certain plugins you can install such as [MySQL](https://mysql.com), [Postgres](https://postgresql.com), [Redis](https://redis.io), and much more. To install a plugin you can run following command.
+
+```bash
+$ dokku plugin:install https://github.com/dokku/dokku-postgres.git
+$ dokku postgres:create <your-app-name>
+```
+
+Now you can deploy your app to your Dokku server. All you have to do is add a remote to name the app. Dokku will looking for the `Dockerfile` in the root directory of your repository and build it on your Dokku server. Simply by running this following command.
+
+```bash
+$ git remote add dokku dokku@<your-server-ip>:<your-app-name>
+$ git push dokku master
+```
+
+When the deploy finishes, the application's URL will be shown as seen above. Then, you are good to go!
 
 ## Conslusion
 

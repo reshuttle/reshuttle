@@ -28,9 +28,7 @@ $ npm install
 Clone the repository on github, and go into that folder. Then you will see something like this.
 
 ```tree
-├── default.conf
-├── Dockerfile
-└── index.html
+tree
 ```
 
 ## Conclusion

@@ -29,14 +29,12 @@ In this tutorial, we will learn how to deploy your containerized application wit
 - A [Docker Hub](https://hub.docker.com) account.
 - A Virtual Private Server.
 
-## Getting Started
+## Getting started
 
 I have prepared the boilerplate of this project. You can clone it, or you can follow along this tutorial step by step if you want.
 
 ```bash
 $ git clone https://github.com/reshuttle/docker-dokku-demo.git
-
-$ npm install
 ```
 
 Clone the repository on github, and go into that folder. Then you will see something like this.

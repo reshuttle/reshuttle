@@ -10,6 +10,7 @@ tags:
   - aws
   - lambda
 published: true
+author: 'rahmanfadhil'
 ---
 
 ## Introduction

@@ -71,7 +71,12 @@ export default ({ data }) => {
 
 export const query = graphql`
   {
-    allMarkdownRemark(filter: { frontmatter: { published: { eq: true } } }) {
+    allMarkdownRemark(
+      filter: {
+        frontmatter: { published: { eq: true } }
+        fields: { sourceName: { eq: "posts" } }
+      }
+    ) {
       edges {
         node {
           frontmatter {

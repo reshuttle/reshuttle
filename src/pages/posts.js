@@ -34,7 +34,10 @@ export const query = graphql`
   {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } } }
+      filter: {
+        frontmatter: { published: { eq: true } }
+        fields: { sourceName: { eq: "posts" } }
+      }
     ) {
       edges {
         node {

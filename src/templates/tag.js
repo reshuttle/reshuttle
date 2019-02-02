@@ -44,7 +44,10 @@ export default ({ data, pageContext }) => {
 export const query = graphql`
   query($tag: String!) {
     allMarkdownRemark(
-      filter: { frontmatter: { tags: { eq: $tag }, published: { eq: true } } }
+      filter: {
+        fields: { sourceName: { eq: "posts" } }
+        frontmatter: { tags: { eq: $tag }, published: { eq: true } }
+      }
     ) {
       edges {
         node {

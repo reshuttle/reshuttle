@@ -8,16 +8,39 @@ function flatten(arr) {
   }, [])
 }
 
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+
+  // We only care about MarkdownRemark content.
+  if (node.internal.type !== 'MarkdownRemark') {
+    return
+  }
+
+  const fileNode = getNode(node.parent)
+
+  createNodeField({
+    node,
+    name: 'sourceName',
+    value: fileNode.sourceInstanceName,
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const posts = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(
+        filter: {
+          fields: { sourceName: { eq: "posts" } }
+          frontmatter: { published: { eq: true } }
+        }
+      ) {
         edges {
           node {
             frontmatter {
               slug
+              author
             }
           }
         }
@@ -31,13 +54,19 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/templates/post.js`),
       context: {
         slug: node.frontmatter.slug,
+        author: node.frontmatter.author,
       },
     })
   })
 
   const tags = await graphql(`
     {
-      allMarkdownRemark(filter: { frontmatter: { published: { eq: true } } }) {
+      allMarkdownRemark(
+        filter: {
+          fields: { sourceName: { eq: "posts" } }
+          frontmatter: { published: { eq: true } }
+        }
+      ) {
         edges {
           node {
             frontmatter {

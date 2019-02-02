@@ -19,7 +19,8 @@ const Date = styled.p({
 })
 
 export default ({ data }) => {
-  const post = data.markdownRemark
+  const { post, author } = data
+  console.log(author)
 
   return (
     <Layout active="posts">
@@ -30,7 +31,12 @@ export default ({ data }) => {
       />
 
       <Title>{post.frontmatter.title}</Title>
-      <Date>{post.frontmatter.date}</Date>
+      <Date>
+        <a href={`/author/${author.frontmatter.username}`}>
+          {author.frontmatter.name}
+        </a>{' '}
+        - {post.frontmatter.date}
+      </Date>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       {process.env.NODE_ENV === 'production' ? (
         <DiscussionEmbed
@@ -46,8 +52,11 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+  query($slug: String!, $author: String!) {
+    post: markdownRemark(
+      frontmatter: { slug: { eq: $slug } }
+      fields: { sourceName: { eq: "posts" } }
+    ) {
       id
       html
       frontmatter {
@@ -55,6 +64,16 @@ export const query = graphql`
         tags
         description
         date(formatString: "DD MMMM, YYYY")
+      }
+    }
+
+    author: markdownRemark(
+      frontmatter: { username: { eq: $author } }
+      fields: { sourceName: { eq: "contributors" } }
+    ) {
+      frontmatter {
+        name
+        username
       }
     }
   }

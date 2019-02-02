@@ -1,7 +1,10 @@
 const posts = `
   {
     posts: allMarkdownRemark(
-      filter: { frontmatter: { published: { eq: true } } }
+      filter: {
+        fields: { sourceName: { eq: "posts" } }
+        frontmatter: { published: { eq: true } }
+      }
     ) {
       edges {
         node {

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import algoliasearch from 'algoliasearch'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSyncAlt } from '@fortawesome/free-solid-svg-icons'
 
 import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
@@ -20,17 +18,6 @@ const SearchInput = styled.input({
   ':focus': {
     borderBottom: '2px solid #ff642e',
   },
-})
-
-const LoadingIconContainer = styled.div({
-  marginTop: '3rem',
-  display: 'flex',
-  justifyContent: 'center',
-})
-
-const LoadingIcon = styled(FontAwesomeIcon)({
-  textAlign: 'center',
-  fontSize: '3rem',
 })
 
 export default () => {
@@ -69,11 +56,7 @@ export default () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      {loading ? (
-        <LoadingIconContainer>
-          <LoadingIcon spin icon={faSyncAlt} />
-        </LoadingIconContainer>
-      ) : (
+      {loading ? null : (
         <div
           style={{
             display: 'flex',

@@ -26,6 +26,14 @@ const Divider = styled.hr({
   marginBottom: '3rem',
 })
 
+const EmailInput = styled.input({
+  padding: 10,
+})
+
+const EmailButton = styled.button({
+  padding: 10,
+})
+
 export default ({ data }) => {
   const posts = data.allMarkdownRemark.edges
 
@@ -56,6 +64,13 @@ export default ({ data }) => {
           </div>
         ))}
       </div>
+      <Divider />
+      <form name="contact" method="POST" data-netlify="true">
+        <HeaderTitle small>Subscribe to our Newsletter 📰</HeaderTitle>
+        <EmailInput type="text" name="name" placeholder="Your name" />
+        <EmailInput type="email" name="email" placeholder="Your email" />
+        <EmailButton type="submit">Subscribe</EmailButton>
+      </form>
       <Divider />
       <div
         style={{

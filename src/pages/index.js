@@ -73,22 +73,20 @@ export default ({ data }) => {
       </div>
       <Divider />
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ name: '', email: '' }}
         onSubmit={async (values) => {
           const data = await axios.post(
             '/',
             encode({ 'form-name': 'subscribe', ...values }),
+            {
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            },
           )
           console.log(data)
         }}
       >
         {({ handleSubmit, handleChange, handleBlur }) => (
-          <form
-            name="subscribe"
-            method="POST"
-            netlify="true"
-            onSubmit={handleSubmit}
-          >
+          <form name="subscribe" netlify="true" onSubmit={handleSubmit}>
             <HeaderTitle small>Subscribe to our Newsletter 📰</HeaderTitle>
             <EmailInput
               type="text"

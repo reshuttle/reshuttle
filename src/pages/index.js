@@ -9,6 +9,7 @@ import axios from 'axios'
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
+import transformColor from '../components/helpers/transformColor'
 
 const HeaderTitle = styled.h1(({ small }) => ({
   textAlign: 'center',
@@ -29,11 +30,29 @@ const Divider = styled.hr({
 })
 
 const EmailInput = styled.input({
-  padding: 10,
+  padding: '15px 20px',
+  marginRight: 20,
+  border: 0,
+  backgroundColor: 'transparent',
+  outline: 0,
+  fontFamily: "'IBM Plex Mono', monospace",
+  fontSize: '1.1rem',
+  borderBottom: '2px solid #ccc',
+  '@media (max-width: 768px)': { margin: '0 0 20px 0', width: '100%' },
+  ':focus': { borderBottom: '2px solid #ff642e' },
 })
 
 const EmailButton = styled.button({
-  padding: 10,
+  border: 0,
+  backgroundColor: '#ff642e',
+  color: '#fff',
+  padding: '15px 20px',
+  fontFamily: "'IBM Plex Mono', monospace",
+  outline: 0,
+  fontSize: '1.1rem',
+  '@media (max-width: 768px)': { width: '100%' },
+  ':hover': { backgroundColor: transformColor('#ff642e', 20) },
+  ':active': { backgroundColor: transformColor('#ff642e', 40) },
 })
 
 const encode = (data) =>
@@ -88,21 +107,29 @@ export default ({ data }) => {
         {({ handleSubmit, handleChange, handleBlur }) => (
           <form name="subscribe" netlify="true" onSubmit={handleSubmit}>
             <HeaderTitle small>Subscribe to our Newsletter 📰</HeaderTitle>
-            <EmailInput
-              type="text"
-              name="name"
-              placeholder="Your name"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <EmailInput
-              type="email"
-              name="email"
-              placeholder="Your email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <EmailButton type="submit">Subscribe</EmailButton>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+              }}
+            >
+              <EmailInput
+                type="text"
+                name="name"
+                placeholder="Your name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <EmailInput
+                type="email"
+                name="email"
+                placeholder="Your email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <EmailButton type="submit">Subscribe</EmailButton>
+            </div>
           </form>
         )}
       </Formik>

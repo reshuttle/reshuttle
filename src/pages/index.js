@@ -3,6 +3,8 @@ import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReact } from '@fortawesome/free-brands-svg-icons'
+import { Formik } from 'formik'
+import axios from 'axios'
 
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
@@ -33,6 +35,11 @@ const EmailInput = styled.input({
 const EmailButton = styled.button({
   padding: 10,
 })
+
+const encode = (data) =>
+  Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join('&')
 
 export default ({ data }) => {
   const posts = data.allMarkdownRemark.edges
@@ -65,12 +72,42 @@ export default ({ data }) => {
         ))}
       </div>
       <Divider />
-      <form name="contact" method="POST" data-netlify="true">
-        <HeaderTitle small>Subscribe to our Newsletter 📰</HeaderTitle>
-        <EmailInput type="text" name="name" placeholder="Your name" />
-        <EmailInput type="email" name="email" placeholder="Your email" />
-        <EmailButton type="submit">Subscribe</EmailButton>
-      </form>
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        onSubmit={async (values) => {
+          const data = await axios.post(
+            '/',
+            encode({ 'form-name': 'subscribe', ...values }),
+          )
+          console.log(data)
+        }}
+      >
+        {({ handleSubmit, handleChange, handleBlur }) => (
+          <form
+            name="subscribe"
+            method="POST"
+            netlify="true"
+            onSubmit={handleSubmit}
+          >
+            <HeaderTitle small>Subscribe to our Newsletter 📰</HeaderTitle>
+            <EmailInput
+              type="text"
+              name="name"
+              placeholder="Your name"
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <EmailInput
+              type="email"
+              name="email"
+              placeholder="Your email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <EmailButton type="submit">Subscribe</EmailButton>
+          </form>
+        )}
+      </Formik>
       <Divider />
       <div
         style={{

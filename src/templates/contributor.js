@@ -11,6 +11,7 @@ import {
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
+import transformColor from '../components/helpers/transformColor'
 
 const Title = styled.h1({ marginBottom: 10, marginTop: '2.5rem' })
 
@@ -44,6 +45,21 @@ const Button = styled.a(({ color }) => ({
   },
   marginRight: 10,
   ':last-child': { marginRight: 0 },
+
+  // Hover float
+  WebkitTransform: 'perspective(1px) translateZ(0)',
+  transform: 'perspective(1px) translateZ(0)',
+  WebkitTransitionDuration: '0.3s',
+  transitionDuration: '0.3s',
+  WebkitTransitionProperty: 'transform',
+  transitionProperty: 'transform',
+  WebkitTransitionTimingFunction: 'ease-out',
+  transitionTimingFunction: 'ease-out',
+
+  ':hover': {
+    WebkitTransform: 'translateY(-8px)',
+    transform: 'translateY(-8px)',
+  },
 }))
 
 export default ({ data }) => {

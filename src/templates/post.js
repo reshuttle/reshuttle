@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import styled from '@emotion/styled'
 import { DiscussionEmbed } from 'disqus-react'
 
@@ -32,12 +32,12 @@ export default ({ data }) => {
 
       <Title>{post.frontmatter.title}</Title>
       <Date>
-        <a href={`/author/${author.frontmatter.username}`}>
+        <Link to={`/contributors/${author.frontmatter.username}`}>
           {author.frontmatter.name}
-        </a>{' '}
+        </Link>{' '}
         - {post.frontmatter.date}
       </Date>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <div dangerouslySetInnerHTML={{ __html: post.html }} id="content" />
       {process.env.NODE_ENV === 'production' ? (
         <DiscussionEmbed
           shortname="reshuttle"

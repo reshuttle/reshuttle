@@ -89,4 +89,28 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { tag },
     })
   })
+
+  const contributors = await graphql(`
+    {
+      allMarkdownRemark(
+        filter: { fields: { sourceName: { eq: "contributors" } } }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              username
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  contributors.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: '/contributors/' + node.frontmatter.username,
+      component: path.resolve(`./src/templates/contributor.js`),
+      context: { username: node.frontmatter.username },
+    })
+  })
 }

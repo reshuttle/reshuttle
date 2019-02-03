@@ -50,6 +50,7 @@ const EmailButton = styled.button({
   fontFamily: "'IBM Plex Mono', monospace",
   outline: 0,
   fontSize: '1.1rem',
+  cursor: 'pointer',
   '@media (max-width: 768px)': { width: '100%' },
   ':hover': { backgroundColor: transformColor('#ff642e', 20) },
   ':active': { backgroundColor: transformColor('#ff642e', 40) },

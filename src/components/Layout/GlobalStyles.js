@@ -97,11 +97,13 @@ export default () => (
         }
       }
 
-      img {
-        display: block;
-        margin: 3rem auto;
-        box-shadow: 0 0 10px #444c5e;
-        width: 75%;
+      #content {
+        img {
+          display: block;
+          margin: 3rem auto;
+          box-shadow: 0 0 10px #444c5e;
+          width: 75%;
+        }
       }
     `}
   />

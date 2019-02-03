@@ -11,7 +11,7 @@ import {
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
-import transformColor from '../components/helpers/transformColor'
+import SEO from '../components/SEO'
 
 const Title = styled.h1({ marginBottom: 10, marginTop: '2.5rem' })
 
@@ -67,6 +67,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
+      <SEO title={contributor.name} />
       <div style={{ textAlign: 'center' }}>
         <img
           src={contributor.avatar}

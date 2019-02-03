@@ -8,6 +8,7 @@ import {
   faGithub,
   faFacebook,
   faInstagram,
+  faLinkedin,
 } from '@fortawesome/free-brands-svg-icons'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 
@@ -96,7 +97,7 @@ export default ({ data }) => {
             color="#0077b5"
             href={'https://linkedin.com/in/' + contributor.linkedin}
           >
-            <FontAwesomeIcon icon={faGlobe} /> LinkedIn
+            <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
           </Button>
           <Button color="#40b2a4" href={contributor.website}>
             <FontAwesomeIcon icon={faGlobe} /> Website

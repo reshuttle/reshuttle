@@ -20,7 +20,6 @@ const Date = styled.p({
 
 export default ({ data }) => {
   const { post, author } = data
-  console.log(author)
 
   return (
     <Layout active="posts">

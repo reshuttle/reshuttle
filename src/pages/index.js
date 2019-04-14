@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReact } from '@fortawesome/free-brands-svg-icons'
 import { Formik } from 'formik'
-import axios from 'axios'
 
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
@@ -56,11 +55,6 @@ const EmailButton = styled.button({
   ':active': { backgroundColor: transformColor('#ff642e', 40) },
 })
 
-const encode = (data) =>
-  Object.keys(data)
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join('&')
-
 export default ({ data }) => {
   const posts = data.allMarkdownRemark.edges
 
@@ -95,14 +89,7 @@ export default ({ data }) => {
       <Formik
         initialValues={{ name: '', email: '' }}
         onSubmit={async (values) => {
-          const data = await axios.post(
-            '/',
-            encode({ 'form-name': 'subscribe', ...values }),
-            {
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            },
-          )
-          console.log(data)
+          console.log(values)
         }}
       >
         {({ handleSubmit, handleChange, handleBlur }) => (

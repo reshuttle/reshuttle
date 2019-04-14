@@ -8,7 +8,7 @@ import { Formik } from 'formik'
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
-import transformColor from '../components/helpers/transformColor'
+import transformColor from '../utils/flattenArray'
 
 const HeaderTitle = styled.h1(({ small }) => ({
   textAlign: 'center',

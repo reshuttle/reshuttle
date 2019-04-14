@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import transformColor from '../helpers/transformColor'
+import transformColor from '../../utils/transformColor'
 import { Link } from 'gatsby'
 
 export const SidebarContainer = styled.div({

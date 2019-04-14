@@ -4,7 +4,7 @@ import { graphql, Link } from 'gatsby'
 import uniq from 'lodash/uniq'
 
 import Layout from '../components/Layout'
-import transformColor from '../components/helpers/transformColor'
+import transformColor from '../utils/transformColor'
 import flattenArray from '../utils/flattenArray'
 import SEO from '../components/SEO'
 

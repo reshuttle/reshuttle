@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
 
-import transformColor from '../components/helpers/transformColor'
+import transformColor from '../utils/transformColor'
 
 const PostCardContainer = styled.div({
   width: 450,

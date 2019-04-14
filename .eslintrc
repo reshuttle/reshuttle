@@ -1,5 +1,10 @@
 {
-  "extends": ["react-app", "plugin:prettier/recommended"],
+  "extends": [
+    "react-app",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
   "rules": {
     "jsx-a11y/accessible-emoji": "off"
   }

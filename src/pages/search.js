@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
-import algoliasearch from 'algoliasearch'
+import { graphql } from 'gatsby'
+import * as JsSearch from 'js-search'
 
 import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
@@ -20,30 +21,31 @@ const SearchInput = styled.input({
   },
 })
 
-export default () => {
-  const client = algoliasearch(
-    process.env.GATSBY_ALGOLIA_APP_ID,
-    process.env.GATSBY_ALGOLIA_SEARCH_KEY,
-  )
-  const index = client.initIndex('Posts')
+export default ({ data }) => {
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(false)
   const [posts, setPosts] = useState([])
 
-  async function getPosts() {
+  function getPosts() {
     setLoading(true)
-    const data = await index.search({ query: search })
-    const result = data.hits
-    setPosts(result)
+    const result = data.allMarkdownRemark.edges.map(({ node }) => ({
+      id: node.id,
+      ...node.frontmatter,
+    }))
+    const findSearch = new JsSearch.Search('id')
+    findSearch.addIndex('title')
+    findSearch.addIndex('description')
+    findSearch.addIndex('slug')
+    findSearch.addIndex('tags')
+    findSearch.addIndex('author')
+    findSearch.addDocuments(result)
+    setPosts(findSearch.search(search))
     setLoading(false)
   }
 
-  useEffect(
-    () => {
-      getPosts()
-    },
-    [search],
-  )
+  useEffect(() => {
+    getPosts()
+  }, [search])
 
   return (
     <Layout active="search">
@@ -75,3 +77,28 @@ export default () => {
     </Layout>
   )
 }
+
+export const query = graphql`
+  {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: {
+        frontmatter: { published: { eq: true } }
+        fields: { sourceName: { eq: "posts" } }
+      }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            description
+            slug
+            tags
+            date(formatString: "DD MMMM, YYYY")
+          }
+        }
+      }
+    }
+  }
+`

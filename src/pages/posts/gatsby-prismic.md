@@ -1,6 +1,6 @@
 ---
 title: 'Client-Friendly E-commerce Site with Gatsby and Prismic'
-decrtiption: 'Learn how to build E-commerce site with GatsbyJS and Prismic CMS'
+description: 'Learn how to build E-commerce site with GatsbyJS and Prismic CMS'
 date: '2019-02-03'
 slug: 'gatsby-prismic-ecommerce'
 tags:

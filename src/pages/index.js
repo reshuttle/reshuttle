@@ -60,7 +60,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Launch your app faster than ever" />
+      <SEO title="Reshuttle.com" />
       <div style={{ maxWidth: 800, marginLeft: 'auto', marginRight: 'auto' }}>
         <HeaderTitle>Launch your apps 🚀 faster than ever ⚡</HeaderTitle>
         <HeaderSubtitle>

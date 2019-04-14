@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
-import * as JsSearch from 'js-search'
+import { Search } from 'js-search'
 
 import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
@@ -32,7 +32,7 @@ export default ({ data }) => {
       id: node.id,
       ...node.frontmatter,
     }))
-    const findSearch = new JsSearch.Search('id')
+    const findSearch = new Search('id')
     findSearch.addIndex('title')
     findSearch.addIndex('description')
     findSearch.addIndex('slug')

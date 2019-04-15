@@ -9,6 +9,7 @@ import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
 import transformColor from '../utils/transformColor'
+import { Text } from '../components/Partials/Typography'
 
 const HeaderTitle = styled.h1(({ small }) => ({
   textAlign: 'center',
@@ -58,6 +59,11 @@ const EmailButton = styled.button({
   '@media (max-width: 768px)': { width: '100%' },
   ':hover': { backgroundColor: transformColor('#ff642e', 20) },
   ':active': { backgroundColor: transformColor('#ff642e', 40) },
+})
+
+const FooterText = styled(Text)({
+  fontSize: '1rem',
+  marginTop: 0,
 })
 
 export default ({ data }) => {
@@ -136,11 +142,11 @@ export default ({ data }) => {
           marginTop: '3rem',
         }}
       >
-        <p style={{ fontSize: '1rem', margin: 0 }}>Copyright © 2019</p>
-        <p style={{ fontSize: '1rem', marginTop: 0 }}>
+        <FooterText style={{ marginBottom: 0 }}>Copyright © 2019</FooterText>
+        <FooterText>
           Build with <FontAwesomeIcon icon={faReact} /> by{' '}
           <a href="https://github.com/rahmanfadhil">Rahman Fadhil</a>
-        </p>
+        </FooterText>
       </div>
     </Layout>
   )

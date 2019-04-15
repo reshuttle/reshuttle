@@ -1,17 +1,17 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import { DiscussionEmbed } from 'disqus-react'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
+import { Title, Anchor, Text } from '../components/Partials/Typography'
 
-const Title = styled.h1({
+const PostTitle = styled(Title)({
   marginBottom: 0,
-  marginTop: '2rem',
 })
 
-const Date = styled.p({
+const Date = styled(Text)({
   marginTop: 10,
   marginBottom: '3rem',
   color: '#454545',
@@ -29,14 +29,14 @@ export default ({ data }) => {
         keywords={post.frontmatter.tags}
       />
 
-      <Title>{post.frontmatter.title}</Title>
+      <PostTitle>{post.frontmatter.title}</PostTitle>
       <Date>
-        <Link to={`/contributors/${author.frontmatter.username}`}>
+        <Anchor to={`/contributors/${author.frontmatter.username}`}>
           {author.frontmatter.name}
-        </Link>{' '}
+        </Anchor>{' '}
         - {post.frontmatter.date}
       </Date>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} id="content" />
+      <div dangerouslySetInnerHTML={{ __html: post.html }} id="post-content" />
       {process.env.NODE_ENV === 'production' ? (
         <DiscussionEmbed
           shortname="reshuttle"

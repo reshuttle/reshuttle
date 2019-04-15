@@ -8,17 +8,22 @@ import { Formik } from 'formik'
 import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
-import transformColor from '../utils/flattenArray'
+import transformColor from '../utils/transformColor'
 
 const HeaderTitle = styled.h1(({ small }) => ({
   textAlign: 'center',
   fontSize: small ? '2.1rem' : '2.5rem',
   svg: { fontSize: '2rem' },
+  fontFamily: "'Quicksand', cursive",
+  fontWeight: 700,
 }))
 
 const HeaderSubtitle = styled.p({
   textAlign: 'center',
   marginTop: 0,
+  fontFamily: "'Nunito', sans-serif",
+  fontSize: '1.3rem',
+  marginBottom: '2rem',
 })
 
 const Divider = styled.hr({

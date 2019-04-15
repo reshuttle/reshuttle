@@ -7,8 +7,10 @@ import Layout from '../components/Layout'
 import transformColor from '../utils/transformColor'
 import flattenArray from '../utils/flattenArray'
 import SEO from '../components/SEO'
+import { Title } from '../components/Partials/Typography'
 
 const Tag = styled(Link)({
+  textDecoration: 'none',
   padding: '3px 10px',
   backgroundColor: '#ccc',
   fontFamily: "'IBM Plex Mono', monospace",
@@ -50,7 +52,7 @@ export default ({ data }) => {
   return (
     <Layout active="tags">
       <SEO title="Tags" />
-      <h1>Tags</h1>
+      <Title>Tags</Title>
       <div
         style={{
           display: 'flex',

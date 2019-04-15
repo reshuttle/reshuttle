@@ -40,12 +40,15 @@ const PostCardTitle = styled.h3({
   marginBottom: '0.3rem',
   textDecoration: 'none',
   color: '#000',
+  fontFamily: "'Quicksand', cursive",
+  fontSize: '1.7rem',
 })
 
 const PostCardDate = styled.p({
   margin: 0,
   color: '#454545',
   fontSize: '0.9rem',
+  fontFamily: "'Nunito', sans-serif",
 })
 
 const PostCardDescription = styled.p({
@@ -54,6 +57,7 @@ const PostCardDescription = styled.p({
   color: '#454545',
   fontSize: '1.2rem',
   textAlign: 'left',
+  fontFamily: "'Nunito', sans-serif",
 })
 
 const Tag = styled.div({

@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import PostCard from '../components/PostCard'
+import { Title } from '../components/Partials/Typography'
 
 export default ({ data }) => {
   const posts = data.allMarkdownRemark.edges
@@ -11,7 +12,7 @@ export default ({ data }) => {
   return (
     <Layout active="posts">
       <SEO title="Posts" />
-      <h1>Latest posts</h1>
+      <Title>Latest posts</Title>
       <div
         style={{
           display: 'flex',
